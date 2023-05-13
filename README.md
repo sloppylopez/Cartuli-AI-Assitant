@@ -71,7 +71,7 @@
       <h2>We Need You!</h2>
       <h3>Join Us in Developing <strong>Cartuli</strong> - The Ultimate AI Assistant</h3>
       <div style="text-align: center;">
-        <img src="images/urkel-sam.jpg" alt="Uncle Sam" width="300" height="300">
+        <img src="images/uncle-sam-cartuli.jpg" alt="Uncle Sam" width="300" height="300">
       </div>
       <p>We are on a mission to create the best AI Assistant in the world, and we need your help to make it happen! At <strong>Cartuli</strong>, we believe in empowering developers to code from the bed, the couch, or wherever they desire, with the most incredible AI Assistant ever created.</p>
       <p>We are looking for talented and enthusiastic developers to join our ranks and contribute to the development of <strong>Cartuli</strong>. With your expertise and passion, we can make <strong>Cartuli</strong> shamelessly better than Cortana, Siri, Google Assistant, and even Microsoft Jarvis!</p>
