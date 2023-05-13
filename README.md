@@ -27,7 +27,7 @@
   <p>CORTANA: Say what, say what?</p>
 
 <h3>On-the-fly Configurable Personalities</h3>
-  <p><strong>Cartuli</strong> isn't just any AI assistant; it's a shape-shifter of personalities! Want <strong>Cartuli</strong> to channel the spirit of Donald Trump, delivering answers that are "tremendous" and "unbelievable"? No problem! Craving Elvish or Shakespearean responses? Consider it done, thou artless tardy-gaited scut! Delivering answers that are "tremendous" and "unbelievable."</p>
+  <p><strong>Cartuli</strong> isn't just any AI assistant, it's a shape-shifter of personalities! Want <strong>Cartuli</strong> to channel the spirit of Donald Trump, delivering answers that are "tremendous" and "unbelievable"? No problem! Craving Elvish or Shakespearean responses? Consider it done, thou artless tardy-gaited scut!</p>
 
 <h2>Getting Started</h2>
 
