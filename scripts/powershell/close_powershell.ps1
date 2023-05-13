@@ -1,0 +1,1 @@
+Get-Process powershell | ForEach-Object { $_.Kill() }
