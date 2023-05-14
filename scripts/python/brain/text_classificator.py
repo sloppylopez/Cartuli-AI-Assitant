@@ -1,6 +1,6 @@
 import spacy
 
-from scripts.python.ears.chat_gpt_voice_asker import asker
+from scripts.python.mouth.chat_gpt_asker import asker
 from scripts.python.mouth.cartuli_says import cartuli_says
 
 # Load the spaCy English language model
@@ -40,7 +40,7 @@ def classify_command(text):
             else:
                 cartuli_says("Command not recognized from list...")
             return
-    cartuli_says("Command not in list..., trying with ChatGPT")
+    cartuli_says("Command not in list... trying with ChatGPT")
     asker(text)
 
 
