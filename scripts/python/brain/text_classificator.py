@@ -1,6 +1,5 @@
 import spacy
 
-
 # Load the spaCy English language model
 nlp = spacy.load('en_core_web_sm')
 
@@ -15,7 +14,7 @@ commands = {
 }
 
 # Process user input and perform the corresponding action
-def process_command(text):
+def classify_command(text):
     doc = nlp(text)
 
     for token in doc:
@@ -77,7 +76,3 @@ def call_chatGPT(script):
 
     # Code to run the script goes here
     # asker()
-
-# Example usage
-command = input("Enter a command: ")
-process_command(command)

@@ -23,7 +23,6 @@ window.overrideredirect(True)
 # Set the initial window transparency
 window.attributes("-alpha", 0.0)
 
-
 # Function to gradually increase the window's transparency
 def fade_in():
     for i in range(0, 45):
