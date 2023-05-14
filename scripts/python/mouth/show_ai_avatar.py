@@ -1,12 +1,9 @@
-import sys
 import time
 import tkinter as tk
 
-import keyboard
 from PIL import Image, ImageTk
 
 from scripts.python.hands.get_image import get_file_from_path
-from scripts.python.mouth.cartuli_says import cartuli_says
 
 
 def fade_in(window):
@@ -31,8 +28,7 @@ def fade_out(window):
         pass
 
 
-def display_image(image_path, is_f19_pressed):
-    cartuli_says('Say something, I\'m all ears...')
+def display_image(image_path, keyboard):
     # Start displaying the image when F19 key is pressed
     root = tk.Tk()
     root.attributes("-alpha", 0)  # Set initial transparency to 0
@@ -56,7 +52,7 @@ def display_image(image_path, is_f19_pressed):
     canvas.create_image(0, 0, anchor="nw", image=photo)
     root.attributes("-topmost", True)  # Keep the window on top of other windows
     root.update()
-    if is_f19_pressed:
+    if keyboard.is_pressed('f19'):
         fade_in(root)
 
     while True:
