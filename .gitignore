@@ -5,3 +5,4 @@ venv
 .iml
 maven_clean_install.bat
 __pycache__
+outputs
