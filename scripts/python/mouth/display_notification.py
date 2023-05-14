@@ -1,6 +1,10 @@
 import sys
 
 from plyer import notification
+
+from scripts.python.hands.get_image import get_file_from_path
+
+
 def display_notification(message):
     try:
         notification.notify(
@@ -8,10 +12,11 @@ def display_notification(message):
             message=message,
             timeout=10000,
             toast=True,
-            app_icon="C:\elgato\images\cartuli-logo-master-small.ico"
+            app_icon=get_file_from_path("../../../cartuli-logo-master-small.ico")
         )
     except:
         pass
+
 
 if __name__ == "__main__":
     display_notification("Hello, World!")

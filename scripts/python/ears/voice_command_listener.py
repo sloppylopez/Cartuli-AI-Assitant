@@ -21,3 +21,13 @@ def voice_command_listener():
         cartuli_says("Could not understand audio")
     except sr.RequestError as e:
         cartuli_says(f"Could not request results; {e}")
+
+
+# def voice_2_text(audio, r):
+#     # Convert speech to text
+#     text = r.recognize_google(audio)
+#     cartuli_says(f"You said: {text}")
+#     # Write question text to clipboard
+#     copy_to_clipboard(text)
+#     # Classify command text
+#     classify_command(text)

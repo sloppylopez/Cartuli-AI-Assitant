@@ -9,5 +9,5 @@ def get_audio():
     with sr.Microphone() as source:
         r.adjust_for_ambient_noise(source)
         cartuli_says("Speak something...")
-        audio = r.listen(source, timeout=10000, phrase_time_limit=20000)
+        audio = r.listen(source, timeout=10, phrase_time_limit=10)
     return audio, r
