@@ -9,7 +9,9 @@ from queue import Queue
 
 import speech_recognition as sr
 
+from scripts.python.hands.get_image import get_file_from_path
 from scripts.python.mouth.cartuli_says import cartuli_says
+from scripts.python.mouth.show_ai_avatar import display_image
 
 r = sr.Recognizer()
 audio_queue = Queue()
@@ -44,7 +46,8 @@ with sr.Microphone() as source:
     try:
         while True:
             if keyboard.is_pressed('f19'):
-
+                keyboard.add_hotkey("f19", lambda: display_image(
+                    get_file_from_path("../../../images/cartuli-logo-master.png"), keyboard.is_pressed('f19')))
                 cartuli_says('Say something, I\'m all ears...')
                 if not is_f19_pressed:
                     audio_queue.put(r.listen(source))
@@ -55,3 +58,5 @@ with sr.Microphone() as source:
     except KeyboardInterrupt:
         pass
 
+if __name__ == "__main__":
+    recognize_worker()
