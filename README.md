@@ -14,10 +14,11 @@
     keyboard. Say goodbye to manual input and effortlessly execute actions with a single press. <strong>Cartuli</strong>
     puts the power of automation at your fingertips.</p>
 
-<h3>Web Browsing and Online Searches</h3>
+<h3>Web Browsing and Online Searches, ChatGPT</h3>
 <p>Need to quickly look up something online? <strong>Cartuli</strong> has got you covered. Open your favorite browser
     with just a command and make online searches without interrupting your workflow. <strong>Cartuli</strong> seamlessly
-    integrates with your web browsing experience.</p>
+    integrates with your web browsing experience.This goes without saying but you can also ask questions
+to ChatGPT just using your voice through <strong>Cartuli</strong></p>
 
 <h3>Intellij Idea Integration</h3>
 <p><strong>Cartuli</strong> integrates with Intellij Idea, the powerful IDE. But here's the kicker: you can control
