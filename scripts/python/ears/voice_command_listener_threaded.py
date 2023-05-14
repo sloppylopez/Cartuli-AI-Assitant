@@ -43,11 +43,15 @@ recognize_thread.start()
 
 with sr.Microphone() as source:
     is_f19_pressed = False
+    once = True
     try:
         while True:
             if keyboard.is_pressed('F19'):
                 keyboard.add_hotkey("F19", lambda: display_image(
-                    get_file_from_path("../../../images/cartuli-logo-master.png"), keyboard.is_pressed('f19')))
+                    get_file_from_path("../../../images/cartuli-logo-master.png"), keyboard))
+                if once:
+                    cartuli_says('Say something, I\'m all ears...')
+                    once = False
                 if not is_f19_pressed:
                     audio_queue.put(r.listen(source))
                     is_f19_pressed = True
