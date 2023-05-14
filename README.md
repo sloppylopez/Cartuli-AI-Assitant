@@ -7,7 +7,7 @@
 
 <h1>Hi!, my name is <strong>Cartuli</strong>.</h1>
 
-<h2>I'm an actually useful AI Assistant. these are my features so far.</h2>
+<h2>I'm an 'achsually' useful AI Assistant. these are my features so far.</h2>
 
 <h3>Streamlined Commands with Elgato Stream Deck</h3>
 <p>With <strong>Cartuli</strong>, you can now give voice commands directly by pressing buttons on your Elgato Stream Deck or
