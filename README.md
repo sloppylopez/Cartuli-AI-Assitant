@@ -41,6 +41,7 @@
 
         🤷‍♂️User: Cortana, open youtube, play some rap!
         🤖CORTANA: Say what, say what?
+        🤓CARTULI: Yes, my liege
 
 <h3>On-the-fly Configurable Personalities</h3>
 <p><strong>Cartuli</strong> isn't just any AI assistant, it's a shape-shifter of personalities! Want
