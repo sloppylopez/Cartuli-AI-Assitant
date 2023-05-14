@@ -119,7 +119,7 @@ to ChatGPT just using your voice through <strong>Cartuli</strong></p>
 
 <p>Thank you for your understanding and collaboration in making <strong>Cartuli</strong> a better AI assistant.</p>
 <section>
-    <h2>We Need You!</h2>
+    <h2>I Need You!</h2>
     <h3>Join Us in Developing <strong>Cartuli</strong> - The Actually Helpful AI Assistant</h3>
     <div style="text-align: center;">
         <img src="images/uncle-sam-cartuli.jpg" alt="Uncle Sam" width="300" height="300">
