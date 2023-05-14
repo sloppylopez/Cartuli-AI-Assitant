@@ -6,6 +6,7 @@ import keyboard
 from PIL import Image, ImageTk
 
 from scripts.python.hands.get_image import get_file_from_path
+from scripts.python.mouth.cartuli_says import cartuli_says
 
 
 def fade_in(window):
@@ -31,6 +32,7 @@ def fade_out(window):
 
 
 def display_image(image_path, is_f19_pressed):
+    cartuli_says('Say something, I\'m all ears...')
     # Start displaying the image when F19 key is pressed
     root = tk.Tk()
     root.attributes("-alpha", 0)  # Set initial transparency to 0
