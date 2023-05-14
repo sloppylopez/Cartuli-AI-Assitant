@@ -111,7 +111,7 @@
 </ul>
 
 <p>By utilizing this set of commands, <strong>Cartuli</strong> provides a user-friendly and efficient interface for
-    executing various tasks and automating daily development chores. With just a simple command,
+    executing various tasks and automating daily development chores. With just a simply voice <strong>keyword</strong> command,
     <strong>Cartuli</strong> will swiftly carry out your instructions, making your coding experience more enjoyable
     and productive.</p>
 </section>
