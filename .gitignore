@@ -3,3 +3,5 @@ venv
 */.idea
 *.exe
 .iml
+maven_clean_install.bat
+__pycache__

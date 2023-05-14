@@ -6,7 +6,11 @@ import os
 import random
 
 # Set the path to the folder containing your images
-image_folder = r"C:\elgato\images"
+script_dir = os.path.dirname(os.path.abspath(__file__))
+base_dir = os.path.abspath(os.path.join(script_dir, "../../../images"))
+image_folder = os.path.normpath(base_dir)
+print(f"Image folder path: {image_folder}")
+
 # Get a list of image files from the specified folder
 image_files = [file for file in os.listdir(image_folder) if file.lower().endswith((".jpg", ".jpeg", ".png", ".gif"))]
 
@@ -18,7 +22,6 @@ window.overrideredirect(True)
 
 # Set the initial window transparency
 window.attributes("-alpha", 0.0)
-
 
 # Function to gradually increase the window's transparency
 def fade_in():

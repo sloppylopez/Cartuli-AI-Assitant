@@ -197,6 +197,10 @@
         interact with AI
         Assistants.</p>
 </section>
+<section>
+    <h2>Interest Links</h2>
+    <p>https://platform.openai.com/docs/api-reference/completions/create</p>
+</section>
 <div style="text-align: center;">
     <h2>Powered by</h2>
     <img src="images/Python-logo-notext.svg.png" alt="ChatGPT Logo" width="200" height="200">
