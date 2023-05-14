@@ -72,7 +72,7 @@
 <p>We would like to express our gratitude to the open-source community for their valuable contributions and support in
     making <strong>Cartuli</strong> a reality.</p>
 
-<p>Join us on this exciting journey with <strong>Cartuli</strong>, your ultimate AI Helpful Assistant for Windows 11.
+<p>Join us on this exciting journey with <strong>Cartuli</strong>, your actually helpful AI Assistant for Windows 11.
     Let's automate and streamline our daily development chores like never before! 🚀🤖</p>
 
 <h2>Disclaimer</h2>
@@ -99,7 +99,7 @@
 <p>Thank you for your understanding and collaboration in making <strong>Cartuli</strong> a better AI assistant.</p>
 <section>
     <h2>We Need You!</h2>
-    <h3>Join Us in Developing <strong>Cartuli</strong> - The Ultimate AI Assistant</h3>
+    <h3>Join Us in Developing <strong>Cartuli</strong> - The Actually Helpful AI Assistant</h3>
     <div style="text-align: center;">
         <img src="images/uncle-sam-cartuli.jpg" alt="Uncle Sam" width="300" height="300">
     </div>
