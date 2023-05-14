@@ -10,7 +10,7 @@
 <h2>I'm an actually useful AI Assistant. these are my features so far.</h2>
 
 <h3>Streamlined Commands with Elgato Stream Deck</h3>
-<p>With <strong>Cartuli</strong>, you can now give commands directly by pressing buttons on your Elgato Stream Deck or
+<p>With <strong>Cartuli</strong>, you can now give voice commands directly by pressing buttons on your Elgato Stream Deck or
     keyboard. Say goodbye to manual input and effortlessly execute actions with a single press. <strong>Cartuli</strong>
     puts the power of automation at your fingertips.</p>
 
