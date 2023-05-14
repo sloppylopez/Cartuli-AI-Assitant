@@ -59,6 +59,23 @@ to ChatGPT just using your voice through <strong>Cartuli</strong></p>
     <li>Run the <strong>Cartuli</strong> script and enjoy the power of automation!</li>
 </ol>
 
+<section>
+  <h2>Architecture</h2>
+  <p>In the development of <strong>Cartuli</strong>, we have carefully chosen the tools and libraries that power its functionality. Let's take a closer look at the architectural components:</p>
+  
+  <h3>Ears: Python SpeechRecognition</h3>
+  <p>For speech recognition capabilities, we rely on the powerful Python library called SpeechRecognition. It's a versatile and reliable tool that allows <strong>Cartuli</strong> to listen and understand your voice commands surprisingly well. With SpeechRecognition, <strong>Cartuli</strong> can accurately capture your instructions and initiate the corresponding actions.</p>
+  
+  <h3>Brain: Spacy for Text Classification</h3>
+  <p>Spacy is our go-to library for text recognition and understanding. With its advanced natural language processing capabilities, <strong>Cartuli</strong>'s brain can analyze and comprehend your commands and queries. Spacy enables <strong>Cartuli</strong> to extract meaningful information from the text, empowering it to perform the right actions based on your input.</p>
+  
+  <h3>Mouth: Plyer for Windows Notifications</h3>
+  <p>To provide you with timely feedback and updates, <strong>Cartuli</strong> utilizes the Plyer library for displaying Windows notifications. Plyer allows <strong>Cartuli</strong> to deliver important information, reminders, and notifications right on your desktop. Whether it's completion notifications, task updates, or simply a friendly message, <strong>Cartuli</strong>'s mouth ensures that you stay informed and connected.</p>
+  
+  <p>By leveraging the capabilities of these powerful libraries, <strong>Cartuli</strong> achieves a robust and efficient architecture that enables seamless interaction, understanding, and communication. Together, they form the foundation of <strong>Cartuli</strong>'s intelligence and assistive capabilities, making it a reliable and enjoyable AI Assistant for your Windows 11 environment.</p>
+</section>
+
+
 <h2>Contributing</h2>
 
 <p>We welcome contributions from the community to make <strong>Cartuli</strong> even better. If you have any ideas, bug
