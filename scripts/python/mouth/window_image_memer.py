@@ -58,7 +58,7 @@ def get_image_path(source_img):
 def showMemeOnWindow(image_path):
     global gif_image, label, update_gif
     if image_path is None:
-        image_path = get_image_path(image_path);
+        image_path = get_image_path(image_path)
     # Load the image
     if image_path.lower().endswith(".gif"):
         # Load and display an animated GIF

@@ -63,6 +63,6 @@ def getAudio():
     r = sr.Recognizer()
     # Listen to user's voice
     with sr.Microphone() as source:
-        print("Speak something...")
-        audio = r.listen(source, timeout=10000)  # 10 seconds
+        print("Cartuli: Speak something...")
+        audio = r.listen(source)
     return audio, r
