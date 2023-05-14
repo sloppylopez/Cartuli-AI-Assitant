@@ -78,6 +78,22 @@ to ChatGPT just using your voice through <strong>Cartuli</strong></p>
   <p>By leveraging the capabilities of these powerful libraries, <strong>Cartuli</strong> achieves a robust and efficient architecture that enables seamless interaction, understanding, and communication. Together, they form the foundation of <strong>Cartuli</strong>'s intelligence and assistive capabilities, making it a reliable and enjoyable AI Assistant for your Windows 11 environment.</p>
 </section>
 
+<section>
+  <h2>Voice Commands</h2>
+  <p><strong>Cartuli</strong> is designed to understand and execute a set of commands to perform various actions. Here are some of the commands that <strong>Cartuli</strong> is intended to support:</p>
+
+  <ul>
+    <li><strong>open</strong>: Open a specific program or application.</li>
+    <li><strong>type</strong>: Simulate typing characters or text.</li>
+    <li><strong>search</strong>: Perform a search operation in the terminal.</li>
+    <li><strong>play</strong>: Open the music player application.</li>
+    <li><strong>run</strong>: Execute a specific script or program.</li>
+    <li><strong>chatGPT</strong>: Initiate a conversation with ChatGPT, the powerful language model.</li>
+  </ul>
+
+  <p>By utilizing this set of commands, <strong>Cartuli</strong> provides a user-friendly and efficient interface for executing various tasks and automating daily development chores. With just a simple command, <strong>Cartuli</strong> will swiftly carry out your instructions, making your coding experience more enjoyable and productive.</p>
+</section>
+
 
 <h2>Contributing</h2>
 
