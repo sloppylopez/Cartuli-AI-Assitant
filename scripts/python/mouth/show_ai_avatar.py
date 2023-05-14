@@ -31,10 +31,12 @@ def fade_out(window):
 
 
 def display_image(image_path):
+    # Start displaying the image when F19 key is pressed
+    keyboard.add_hotkey("F19", lambda: display_image(get_file_from_path("../../../images/cartuli-logo-master.png")))
     root = tk.Tk()
     root.attributes("-alpha", 0)  # Set initial transparency to 0
     root.overrideredirect(True)  # Remove window decorations
-    root.geometry("+0+0")  # Place window at the top-left corner of the screen
+    root.geometry("+0+0")  # Place window at the down-right corner of the screen
 
     image = Image.open(image_path)
     width, height = image.size
@@ -64,13 +66,14 @@ def display_image(image_path):
             break
         root.update_idletasks()
         root.update()
-        time.sleep(0.01)
+        time.sleep(0.1)
 
     fade_out(root)
+    keyboard.remove_hotkey("F19")
     sys.exit(0)  # Exit with status code 0 after fade-out animation is finished
 
 
-# Start displaying the image when F19 key is pressed
-keyboard.add_hotkey("F19", lambda: display_image(get_file_from_path("../../../images/cartuli-logo-master.png")))
-
-keyboard.wait("esc")  # Wait until the 'esc' key is pressed
+if __name__ == "__main__":
+    # display_image(get_file_from_path("../../../images/cartuli-logo-master.png"))
+    keyboard.add_hotkey("F19", lambda: display_image(get_file_from_path("../../../images/cartuli-logo-master.png")))
+    keyboard.wait("esc")  # Wait until the 'esc' key is pressed
