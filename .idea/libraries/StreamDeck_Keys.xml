@@ -1,9 +1,0 @@
-<component name="libraryTable">
-  <library name="StreamDeck_Keys">
-    <CLASSES>
-      <root url="jar://$PROJECT_DIR$/keys/StreamDeck_Keys.zip!/" />
-    </CLASSES>
-    <JAVADOC />
-    <SOURCES />
-  </library>
-</component>
