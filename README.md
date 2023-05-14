@@ -63,7 +63,7 @@
 </ol>
 
 <section>
-    <h2>Architecture</h2>
+    <h2>Dissection</h2>
     <p>In the development of <strong>Cartuli</strong>, we have carefully chosen the tools and libraries that power its
         functionality. Let's take a closer look at the architectural components:</p>
 

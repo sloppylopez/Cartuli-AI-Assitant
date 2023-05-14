@@ -1,5 +1,7 @@
 import spacy
 
+from scripts.python.mouth.cartuli_says import cartuli_says
+
 # Load the spaCy English language model
 nlp = spacy.load('en_core_web_sm')
 
@@ -12,6 +14,7 @@ commands = {
     "run": "run_script",
     "chatGPT": "call_chatGPT"
 }
+
 
 # Process user input and perform the corresponding action
 def classify_command(text):
@@ -38,41 +41,47 @@ def classify_command(text):
                 print("Unknown command.")
             return
 
-    print("Command not recognized. Trying luck with the heavy hitters")
+    cartuli_says("Command not recognized. Trying luck with the heavy hitters")
+
 
 # Perform the action: open a program
 def open_program(program):
-    print(f"Opening program: {program}")
+    cartuli_says(f"Opening program: {program}")
 
     # Code to open the program goes here
 
+
 # Perform the action: type characters
 def type_chars(chars):
-    print(f"Typing: {chars}")
+    cartuli_says(f"Typing: {chars}")
 
     # Code to type the characters goes here
 
+
 # Perform the action: search in terminal console
 def search_terminal(query):
-    print(f"Searching: {query}")
+    cartuli_says(f"Searching: {query}")
 
     # Code to perform the search in terminal console goes here
 
+
 # Perform the action: open the OS default music player
 def open_music_player():
-    print("Opening music player")
+    cartuli_says("Opening music player")
 
     # Code to open the OS default music player goes here
 
+
 # Perform the action: run a script
 def run_script(script):
-    print(f"Running script: {script}")
+    cartuli_says(f"Running script: {script}")
 
     # Code to run the script goes here
 
+
 # Perform the action: run a script
 def call_chatGPT(script):
-    print(f"Running script: {script}")
+    cartuli_says(f"Running script: {script}")
 
     # Code to run the script goes here
     # asker()

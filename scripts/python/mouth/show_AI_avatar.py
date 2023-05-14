@@ -1,10 +1,12 @@
-import time
-from PIL import Image, ImageTk
-import tkinter as tk
 import sys
-import os
-import random
+import time
+import tkinter as tk
+
 import keyboard
+from PIL import Image, ImageTk
+
+from scripts.python.hands.get_image import get_file_from_path
+
 
 def fade_in(window):
     alpha = window.attributes("-alpha")
@@ -13,6 +15,7 @@ def fade_in(window):
         window.attributes("-alpha", alpha)
         window.update()
         time.sleep(0.008)  # Sleep for 0.008 seconds (30% faster)
+
 
 def fade_out(window):
     try:
@@ -25,6 +28,8 @@ def fade_out(window):
         window.destroy()
     except tk.TclError:
         pass
+
+
 def display_image(image_path):
     root = tk.Tk()
     root.attributes("-alpha", 0)  # Set initial transparency to 0
@@ -64,9 +69,8 @@ def display_image(image_path):
     fade_out(root)
     sys.exit(0)  # Exit with status code 0 after fade-out animation is finished
 
-image_path = "C:\\elgato\\images\\cartuli-logo-master.png"
 
 # Start displaying the image when F19 key is pressed
-keyboard.add_hotkey("F19", lambda: display_image(image_path))
+keyboard.add_hotkey("F19", lambda: display_image(get_file_from_path("../../../images/cartuli-logo-master.png")))
 
 keyboard.wait("esc")  # Wait until the 'esc' key is pressed
