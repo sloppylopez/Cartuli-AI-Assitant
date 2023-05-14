@@ -1,3 +1,5 @@
+import sys
+
 import openai
 import speech_recognition as sr
 import os
@@ -45,11 +47,12 @@ def getChatGptResponse(audio, r):
     )
     if 'choices' in response and len(response['choices']) > 0:
         generated_text = response['choices'][0]['text'].strip()
-        # Display the recognized text as a notification
-        display_notification(generated_text)
         # Write response text to clipboard
         write_to_clipboard(generated_text)
+        # Display the recognized text as a notification
+        display_notification(generated_text)
         print("Generated response:", generated_text)
+        sys.exit(0)
     else:
         print("No response received from the API.")
 
@@ -63,6 +66,7 @@ def getAudio():
     r = sr.Recognizer()
     # Listen to user's voice
     with sr.Microphone() as source:
+        r.adjust_for_ambient_noise(source)
         print("Cartuli: Speak something...")
-        audio = r.listen(source)
+        audio = r.listen(source, timeout=10000)
     return audio, r
