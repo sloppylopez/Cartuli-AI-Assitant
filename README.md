@@ -94,7 +94,7 @@ to ChatGPT just using your voice through <strong>Cartuli</strong></p>
     making <strong>Cartuli</strong> a reality.</p>
 
 <p>Join us on this exciting journey with <strong>Cartuli</strong>, your actually helpful AI Assistant for Windows 11.
-    Let's automate and streamline our daily development chores like never before! 🚀🤖</p>
+    Let's automate and streamline our daily development chores like never before! 🚀🤖🤓</p>
 
 <h2>Disclaimer</h2>
 
