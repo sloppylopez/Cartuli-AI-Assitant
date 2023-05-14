@@ -59,7 +59,7 @@
         INSTALL THEM MANUALLY).
     </li>
     <li>Configure your Elgato Stream Deck with the desired commands and actions.</li>
-    <li>Run the <strong>Cartuli</strong> script and enjoy the power of automation!</li>
+    <li>Run the <strong>Cartuli</strong> script and enjoy the power of real automation!</li>
 </ol>
 
 <section>
