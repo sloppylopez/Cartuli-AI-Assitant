@@ -4,18 +4,24 @@ import sys
 import openai
 import speech_recognition as sr
 
-from scripts.python.brain.text_classificator import classify_command
-from scripts.python.hands.write_to_clipboard import write_to_clipboard
+from scripts.python.hands.copy_to_clipboard import copy_to_clipboard
 from scripts.python.mouth.cartuli_says import cartuli_says
 from scripts.python.mouth.display_notification import display_notification
 
 
-def asker():
+def asker(text):
+    audio = None
+    r = None
     # Set up OpenAI API key
     openai.api_key = get_open_ai_key()
-    audio, r = get_audio()
+    if text is None:
+        audio, r = get_audio()
     try:
-        get_chat_gpt_response(audio, r)
+        # Convert speech to text
+        if text is None:
+            text = r.recognize_google(audio)
+            cartuli_says(f"You said: {text}")
+        get_chat_gpt_response(text)
     except sr.UnknownValueError:
         # TODO add fadeout animation
         cartuli_says("Could not understand audio")
@@ -33,14 +39,7 @@ def get_open_ai_key():
     return api_key
 
 
-def get_chat_gpt_response(audio, r):
-    # Convert speech to text
-    text = r.recognize_google(audio)
-    cartuli_says(f"You said: {text}")
-    # Write question text to clipboard
-    write_to_clipboard(text)
-    # Classify command text
-    classify_command(text)
+def get_chat_gpt_response(text):
     # Generate response from OpenAI API
     response = openai.Completion.create(
         engine="text-davinci-003",
@@ -53,7 +52,7 @@ def get_chat_gpt_response(audio, r):
     if 'choices' in response and len(response['choices']) > 0:
         generated_text = response['choices'][0]['text'].strip()
         # Write response text to clipboard
-        write_to_clipboard(generated_text)
+        copy_to_clipboard(generated_text)
         # Display the recognized text as a notification
         display_notification(generated_text)
         cartuli_says("ChatGPT told me this-> \n" + generated_text)
