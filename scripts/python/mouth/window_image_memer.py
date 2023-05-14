@@ -5,10 +5,10 @@ import sys
 import os
 import random
 
-# Set the path to the folder containing your images
-script_dir = os.path.dirname(os.path.abspath(__file__))
-base_dir = os.path.abspath(os.path.join(script_dir, "../../../images"))
-image_folder = os.path.normpath(base_dir)
+from scripts.python.hands.get_image import get_file_from_path
+
+image_folder = get_file_from_path("../../../images")
+
 print(f"Image folder path: {image_folder}")
 
 # Get a list of image files from the specified folder
@@ -22,6 +22,7 @@ window.overrideredirect(True)
 
 # Set the initial window transparency
 window.attributes("-alpha", 0.0)
+
 
 # Function to gradually increase the window's transparency
 def fade_in():
@@ -47,6 +48,7 @@ def close_window():
     window.destroy()
     sys.exit(0)
 
+
 # Function to get the image path
 def get_image_path(source_img):
     if source_img is not None:
@@ -58,7 +60,7 @@ def get_image_path(source_img):
 def showMemeOnWindow(image_path):
     global gif_image, label, update_gif
     if image_path is None:
-        image_path = get_image_path(image_path);
+        image_path = get_image_path(image_path)
     # Load the image
     if image_path.lower().endswith(".gif"):
         # Load and display an animated GIF

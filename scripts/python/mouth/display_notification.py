@@ -1,7 +1,8 @@
 from plyer import notification
 def display_notification(message):
     notification.notify(
-        title="‍🧙‍♂️Cartuli: ️",
+        title="‍🤓️Cartuli: ️",
         message=message,
-        timeout=10000
+        timeout=10000,
+        toast=True
     )
