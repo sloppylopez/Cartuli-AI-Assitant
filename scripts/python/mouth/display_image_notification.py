@@ -1,15 +1,15 @@
-import time
-from PIL import Image, ImageTk
-import tkinter as tk
-import sys
 import os
 import random
+import sys
+import time
+import tkinter as tk
+
+from PIL import Image, ImageTk
 
 from scripts.python.hands.get_image import get_file_from_path
+from scripts.python.mouth.cartuli_says import cartuli_says
 
 image_folder = get_file_from_path("../../../images")
-
-print(f"Image folder path: {image_folder}")
 
 # Get a list of image files from the specified folder
 image_files = [file for file in os.listdir(image_folder) if file.lower().endswith((".jpg", ".jpeg", ".png", ".gif"))]
@@ -57,10 +57,11 @@ def get_image_path(source_img):
         return os.path.join(image_folder, random.choice(image_files))
 
 
-def showMemeOnWindow(image_path):
+def show_image_on_window(image_path):
     global gif_image, label, update_gif
     if image_path is None:
         image_path = get_image_path(image_path)
+        cartuli_says(f"Image folder path: {image_path}")
     # Load the image
     if image_path.lower().endswith(".gif"):
         # Load and display an animated GIF

@@ -1,5 +1,6 @@
 import spacy
 
+from scripts.python.ears.chat_gpt_voice_asker import asker
 from scripts.python.mouth.cartuli_says import cartuli_says
 
 # Load the spaCy English language model
@@ -19,7 +20,6 @@ commands = {
 # Process user input and perform the corresponding action
 def classify_command(text):
     doc = nlp(text)
-
     for token in doc:
         if token.text.lower() in commands:
             action = commands[token.text.lower()]
@@ -38,10 +38,10 @@ def classify_command(text):
             elif action == "run_script":
                 call_chatGPT(argument)
             else:
-                print("Unknown command.")
+                cartuli_says("Command not recognized from list...")
             return
-
-    cartuli_says("Command not recognized. Trying luck with the heavy hitters")
+    cartuli_says("Command not in list..., trying with ChatGPT")
+    asker(text)
 
 
 # Perform the action: open a program
@@ -49,6 +49,7 @@ def open_program(program):
     cartuli_says(f"Opening program: {program}")
 
     # Code to open the program goes here
+    exit()
 
 
 # Perform the action: type characters
@@ -56,6 +57,7 @@ def type_chars(chars):
     cartuli_says(f"Typing: {chars}")
 
     # Code to type the characters goes here
+    exit()
 
 
 # Perform the action: search in terminal console
@@ -63,6 +65,7 @@ def search_terminal(query):
     cartuli_says(f"Searching: {query}")
 
     # Code to perform the search in terminal console goes here
+    exit()
 
 
 # Perform the action: open the OS default music player
@@ -70,6 +73,7 @@ def open_music_player():
     cartuli_says("Opening music player")
 
     # Code to open the OS default music player goes here
+    exit()
 
 
 # Perform the action: run a script
@@ -77,6 +81,7 @@ def run_script(script):
     cartuli_says(f"Running script: {script}")
 
     # Code to run the script goes here
+    exit()
 
 
 # Perform the action: run a script
@@ -84,4 +89,5 @@ def call_chatGPT(script):
     cartuli_says(f"Running script: {script}")
 
     # Code to run the script goes here
-    # asker()
+    asker(None)
+    exit()
