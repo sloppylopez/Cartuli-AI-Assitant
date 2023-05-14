@@ -39,8 +39,8 @@
     to utilize your machine resources. It works harmoniously with your system, allowing you to focus on your tasks
     without any slowdowns or disruptions.</p>
 
-        <p>User: Cortana, open youtube, play some rap!</p>
-        <p>CORTANA: Say what, say what?</p>
+        🤷‍♂️User: Cortana, open youtube, play some rap!
+        🤖CORTANA: Say what, say what?
 
 <h3>On-the-fly Configurable Personalities</h3>
 <p><strong>Cartuli</strong> isn't just any AI assistant, it's a shape-shifter of personalities! Want
