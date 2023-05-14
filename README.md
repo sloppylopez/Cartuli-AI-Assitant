@@ -10,7 +10,8 @@
 <h2>I'm an 'achsually' useful AI Assistant. these are my features so far.</h2>
 
 <h3>Streamlined Commands with Elgato Stream Deck</h3>
-<p>With <strong>Cartuli</strong>, you can now give voice commands directly by pressing buttons on your Elgato Stream Deck or
+<p>With <strong>Cartuli</strong>, you can now give voice commands directly by pressing buttons on your Elgato Stream
+    Deck or
     keyboard. Say goodbye to manual input and effortlessly execute actions with a single press. <strong>Cartuli</strong>
     puts the power of automation at your fingertips.</p>
 
@@ -18,7 +19,7 @@
 <p>Need to quickly look up something online? <strong>Cartuli</strong> has got you covered. Open your favorite browser
     with just a command and make online searches without interrupting your workflow. <strong>Cartuli</strong> seamlessly
     integrates with your web browsing experience.This goes without saying but you can also ask questions
-to ChatGPT just using your voice through <strong>Cartuli</strong></p>
+    to ChatGPT just using your voice through <strong>Cartuli</strong></p>
 
 <h3>Intellij Idea Integration</h3>
 <p><strong>Cartuli</strong> integrates with Intellij Idea, the powerful IDE. But here's the kicker: you can control
@@ -60,38 +61,58 @@ to ChatGPT just using your voice through <strong>Cartuli</strong></p>
 </ol>
 
 <section>
-  <h2>Architecture</h2>
-  <p>In the development of <strong>Cartuli</strong>, we have carefully chosen the tools and libraries that power its functionality. Let's take a closer look at the architectural components:</p>
-  
-  <h3>👂Ears: Python SpeechRecognition</h3>
-  <p>For speech recognition capabilities, we rely on the powerful Python library called SpeechRecognition. It's a versatile and reliable tool that allows <strong>Cartuli</strong> to listen and understand your voice commands surprisingly well. With SpeechRecognition, <strong>Cartuli</strong> can accurately capture your instructions and initiate the corresponding actions.</p>
-  
-  <h3>🧠Brain: Spacy for Text Classification</h3>
-  <p>Spacy is our go-to library for text recognition and understanding. With its advanced natural language processing capabilities, <strong>Cartuli</strong>'s brain can analyze and comprehend your commands and queries. Spacy enables <strong>Cartuli</strong> to extract meaningful information from the text, empowering it to perform the right actions based on your input.</p>
-  
-  <h3>👄Mouth: Plyer for Windows Notifications</h3>
-  <p>To provide you with timely feedback and updates, <strong>Cartuli</strong> utilizes the Plyer library for displaying Windows notifications. Plyer allows <strong>Cartuli</strong> to deliver important information, reminders, and notifications right on your desktop. Whether it's completion notifications, task updates, or simply a friendly message, <strong>Cartuli</strong>'s mouth ensures that you stay informed and connected.</p>
-  
-  <h3>👌Hands: Pygetwindow for Windows Control</h3>
-  <p>For seamless control over Windows applications, we rely on the Pygetwindow library. Pygetwindow enables <strong>Cartuli</strong> to interact with and manipulate windows, allowing it to open programs, switch between applications, and perform various window-related tasks. With Pygetwindow, <strong>Cartuli</strong> takes full command of your Windows 11 environment, making your development experience even smoother.</p>
-  
-  <p>By leveraging the capabilities of these powerful libraries, <strong>Cartuli</strong> achieves a robust and efficient architecture that enables seamless interaction, understanding, and communication. Together, they form the foundation of <strong>Cartuli</strong>'s intelligence and assistive capabilities, making it a reliable and enjoyable AI Assistant for your Windows 11 environment.</p>
+    <h2>Architecture</h2>
+    <p>In the development of <strong>Cartuli</strong>, we have carefully chosen the tools and libraries that power its
+        functionality. Let's take a closer look at the architectural components:</p>
+
+    <h3>👂Ears: Python SpeechRecognition</h3>
+    <p>For speech recognition capabilities, we rely on the powerful Python library called SpeechRecognition. It's a
+        versatile and reliable tool that allows <strong>Cartuli</strong> to listen and understand your voice commands
+        surprisingly well. With SpeechRecognition, <strong>Cartuli</strong> can accurately capture your instructions and
+        initiate the corresponding actions.</p>
+
+    <h3>🧠Brain: Spacy for Text Classification</h3>
+    <p>Spacy is our go-to library for text recognition and understanding. With its advanced natural language processing
+        capabilities, <strong>Cartuli</strong>'s brain can analyze and comprehend your commands and queries. Spacy
+        enables <strong>Cartuli</strong> to extract meaningful information from the text, empowering it to perform the
+        right actions based on your input.</p>
+
+    <h3>👄Mouth: Plyer for Windows Notifications</h3>
+    <p>To provide you with timely feedback and updates, <strong>Cartuli</strong> utilizes the Plyer library for
+        displaying Windows notifications. Plyer allows <strong>Cartuli</strong> to deliver important information,
+        reminders, and notifications right on your desktop. Whether it's completion notifications, task updates, or
+        simply a friendly message, <strong>Cartuli</strong>'s mouth ensures that you stay informed and connected.</p>
+
+    <h3>👌Hands: Pygetwindow for Windows Control</h3>
+    <p>For seamless control over Windows applications, we rely on the Pygetwindow library. Pygetwindow enables <strong>Cartuli</strong>
+        to interact with and manipulate windows, allowing it to open programs, switch between applications, and perform
+        various window-related tasks. With Pygetwindow, <strong>Cartuli</strong> takes full command of your Windows 11
+        environment, making your development experience even smoother.</p>
+
+    <p>By leveraging the capabilities of these powerful libraries, <strong>Cartuli</strong> achieves a robust and
+        efficient architecture that enables seamless interaction, understanding, and communication. Together, they form
+        the foundation of <strong>Cartuli</strong>'s intelligence and assistive capabilities, making it a reliable and
+        enjoyable AI Assistant for your Windows 11 environment.</p>
 </section>
 
 <section>
-  <h2>Voice Commands</h2>
-  <p><strong>Cartuli</strong> is designed to understand and execute a set of commands to perform various actions. Here are some of the commands that <strong>Cartuli</strong> is intended to support:</p>
+    <h2>Voice Commands</h2>
+    <p><strong>Cartuli</strong> is designed to understand and execute a set of commands to perform various actions. Here
+        are some of the commands that <strong>Cartuli</strong> is intended to support:</p>
 
-  <ul>
-    <li><strong>open</strong>: Open a specific program or application.</li>
-    <li><strong>type</strong>: Simulate typing characters or text.</li>
-    <li><strong>search</strong>: Perform a search operation in the terminal.</li>
-    <li><strong>play</strong>: Open the music player application.</li>
-    <li><strong>run</strong>: Execute a specific script or program.</li>
-    <li><strong>chatGPT</strong>: Initiate a conversation with ChatGPT, the powerful language model.</li>
-  </ul>
+    <ul>
+        <li><strong>open</strong>: Open a specific program or application.</li>
+        <li><strong>type</strong>: Simulate typing characters or text.</li>
+        <li><strong>search</strong>: Perform a search operation in the terminal.</li>
+        <li><strong>play</strong>: Open the music player application.</li>
+        <li><strong>run</strong>: Execute a specific script or program.</li>
+        <li><strong>chatGPT</strong>: Initiate a conversation with ChatGPT, the powerful language model.</li>
+    </ul>
 
-  <p>By utilizing this set of commands, <strong>Cartuli</strong> provides a user-friendly and efficient interface for executing various tasks and automating daily development chores. With just a simple command, <strong>Cartuli</strong> will swiftly carry out your instructions, making your coding experience more enjoyable and productive.</p>
+    <p>By utilizing this set of commands, <strong>Cartuli</strong> provides a user-friendly and efficient interface for
+        executing various tasks and automating daily development chores. With just a simple command,
+        <strong>Cartuli</strong> will swiftly carry out your instructions, making your coding experience more enjoyable
+        and productive.</p>
 </section>
 
 
@@ -161,16 +182,26 @@ to ChatGPT just using your voice through <strong>Cartuli</strong></p>
         exciting features described earlier. However, it's important to note that the project's components, namely the
         "brain," "eyes," "hands," and "ears," are not yet fully connected.</p>
     <p>We are working tirelessly to bring these components together and create a cohesive and seamless experience with
-        <strong>Cartuli</strong>. Our goal is to ensure that each part of <strong>Cartuli</strong> works in perfect harmony, allowing you to unleash
+        <strong>Cartuli</strong>. Our goal is to ensure that each part of <strong>Cartuli</strong> works in perfect
+        harmony, allowing you to unleash
         the full potential of this AI Assistant.</p>
     <p>In addition to the software development, we are also dedicated to creating a delightful Stream Deck profile that
         seamlessly integrates with the Elgato Stream Deck and its variants, including the Stream Deck + and Stream Deck
-        XL. This will enable you to have a personalized and intuitive interface for interacting with <strong>Cartuli</strong> and
+        XL. This will enable you to have a personalized and intuitive interface for interacting with
+        <strong>Cartuli</strong> and
         performing tasks effortlessly.</p>
     <p>As we continue to make progress, we will keep the community updated on the development process and share exciting
-        updates along the way. Together, we will bring <strong>Cartuli</strong> to life and revolutionize the way you interact with AI
+        updates along the way. Together, we will bring <strong>Cartuli</strong> to life and revolutionize the way you
+        interact with AI
         Assistants.</p>
 </section>
+<div style="text-align: center;">
+    <h2>Powered by</h2>
+    <img src="images/Python-logo-notext.svg.png" alt="ChatGPT Logo" width="200" height="200">
+    <img src="images/ChatGPT_logo.svg.png" alt="Python Logo" width="200" height="200">
+    <img src="images/elgato-logo.png" alt="Elgato Logo" width="200" height="200">
+    <img src="images/wsl.png" alt="WSL Logo" width="200" height="200">
+</div>
 </body>
 </html>
 
