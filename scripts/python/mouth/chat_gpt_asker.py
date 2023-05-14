@@ -4,6 +4,7 @@ import sys
 import openai
 import speech_recognition as sr
 
+from scripts.python.ears.hear import get_audio
 from scripts.python.hands.copy_to_clipboard import copy_to_clipboard
 from scripts.python.mouth.cartuli_says import cartuli_says
 from scripts.python.mouth.display_notification import display_notification
@@ -59,14 +60,3 @@ def get_chat_gpt_response(text):
         sys.exit(0)
     else:
         cartuli_says("No response received from the API.")
-
-
-def get_audio():
-    # Set up speech recognition
-    r = sr.Recognizer()
-    # Listen to user's voice
-    with sr.Microphone() as source:
-        r.adjust_for_ambient_noise(source)
-        cartuli_says("Speak something...")
-        audio = r.listen(source, timeout=10000, phrase_time_limit=20000)
-    return audio, r
