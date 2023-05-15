@@ -2,8 +2,8 @@ import speech_recognition as sr
 from speech_recognition import WaitTimeoutError
 
 from brain.text_classificator import classify_command
-from mouth.cartuli_says import cartuli_says
 from ears.hear import get_audio
+from mouth.cartuli_says import cartuli_says
 from tools.clipboard_copier import copy_to_clipboard
 from tools.typewriter import typewriter_print
 
@@ -16,7 +16,7 @@ def voice_command_listener():
         cartuli_says("")
         typewriter_print("Your said: " + r.recognize_google(audio))
         # Write question text to clipboard
-        copy_to_clipboard(text)
+        copy_to_clipboard(text, "Question: ")
         # Classify command text
         classify_command(text)
     except sr.UnknownValueError:
@@ -30,4 +30,3 @@ def voice_command_listener():
         voice_command_listener()
     except Exception as e:
         cartuli_says("Uncontrolled exception; {0}".format(e))
-        voice_command_listener()

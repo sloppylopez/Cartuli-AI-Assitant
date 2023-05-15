@@ -53,7 +53,7 @@ def get_chat_gpt_response(text):
     if 'choices' in response and len(response['choices']) > 0:
         generated_text = response['choices'][0]['text'].strip()
         # Write response text to clipboard
-        copy_to_clipboard(generated_text)
+        copy_to_clipboard(generated_text, "Response: ")
         # Display the recognized text as a notification (Ditching notifications in favour of terminal)
         # display_notification(generated_text)
         typewriter_print(generated_text)
