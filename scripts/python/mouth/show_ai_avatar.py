@@ -1,9 +1,10 @@
 import time
 import tkinter as tk
 
+import keyboard
 from PIL import Image, ImageTk
 
-from scripts.python.hands.get_image import get_file_from_path
+from hands.get_image import get_file_from_path
 
 
 def fade_in(window):

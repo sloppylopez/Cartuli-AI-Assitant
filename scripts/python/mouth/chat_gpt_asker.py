@@ -5,9 +5,10 @@ import openai
 import speech_recognition as sr
 
 from scripts.python.ears.hear import get_audio
-from scripts.python.hands.copy_to_clipboard import copy_to_clipboard
 from scripts.python.mouth.cartuli_says import cartuli_says
 from scripts.python.mouth.display_notification import display_notification
+from scripts.python.tools.clipboard_copier import copy_to_clipboard
+from scripts.python.tools.typewriter import typewriter_print
 
 
 def asker(text):
@@ -56,7 +57,7 @@ def get_chat_gpt_response(text):
         copy_to_clipboard(generated_text)
         # Display the recognized text as a notification
         display_notification(generated_text)
-        cartuli_says("ChatGPT told me this-> \n" + generated_text)
+        typewriter_print(generated_text)
         sys.exit(0)
     else:
         cartuli_says("No response received from the API.")

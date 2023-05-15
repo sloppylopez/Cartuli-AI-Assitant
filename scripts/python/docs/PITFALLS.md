@@ -14,3 +14,5 @@
 
     https://discuss.pytorch.org/t/libcudnn-cnn-infer-so-8-library-can-not-found/164661
     https://github.com/brycedrennan/imaginAIry
+
+   4) https://streamdecklabs.com/run-a-windows-bat-script-on-stream-deck-software-5-1/
