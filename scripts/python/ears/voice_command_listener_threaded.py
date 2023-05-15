@@ -6,8 +6,9 @@ from threading import Thread
 # NOTE: this example requires PyAudio because it uses the Microphone class
 import keyboard
 import speech_recognition as sr
+
 from hands.get_image import get_file_from_path
-from mouth.cartuli_says import cartuli_says
+from mouth.sayer import sayer
 from mouth.show_ai_avatar import display_image
 from tools.typewriter import typewriter_print
 
@@ -26,7 +27,6 @@ def voice_recognize_worker():
             # for testing purposes, we're just using the default API key
             # to use another API key, use `r.recognize_google(audio, key="GOOGLE_SPEECH_RECOGNITION_API_KEY")`
             # instead of `r.recognize_google(audio)`
-            cartuli_says("")
             typewriter_print("Your said: " + r.recognize_google(audio))
         except sr.UnknownValueError:
             typewriter_print("GSR could not understand audio")
@@ -39,7 +39,7 @@ def voice_recognize_worker():
 recognize_thread = Thread(target=voice_recognize_worker)
 recognize_thread.daemon = True
 recognize_thread.start()
-cartuli_says('Started listening, press F19 to speak.')
+sayer('Started listening, press F19 to speak.')
 with sr.Microphone() as source:
     is_f19_pressed = False
     try:

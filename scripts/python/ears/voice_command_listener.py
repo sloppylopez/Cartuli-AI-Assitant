@@ -1,32 +1,37 @@
-import speech_recognition as sr
-from speech_recognition import WaitTimeoutError
+from spinners import Spinners
 
 from brain.text_classificator import classify_command
 from ears.hear import get_audio
-from mouth.cartuli_says import cartuli_says
+from halo import Halo
+from hands.input_text import get_input_text
 from tools.clipboard_copier import copy_to_clipboard
 from tools.typewriter import typewriter_print
 
+MAX_ATTEMPTS = 1
 
-def voice_command_listener():
+
+def voice_command_listener(attempts):
     try:
         audio, r = get_audio()
         # Convert speech to text
         text = r.recognize_google(audio)
-        cartuli_says("")
-        typewriter_print("Your said: " + r.recognize_google(audio))
+        typewriter_print("You said: " + r.recognize_google(audio))
         # Write question text to clipboard
         copy_to_clipboard(text, "Question: ")
         # Classify command text
         classify_command(text)
-    except sr.UnknownValueError:
-        cartuli_says("GSR could not understand audio")
-        voice_command_listener()
-    except sr.RequestError as e:
-        cartuli_says("Could not request results from GSR service; {0}".format(e))
-        voice_command_listener()
-    except WaitTimeoutError as e:
-        cartuli_says("Try to increase wait timeout time; {0}".format(e))
-        voice_command_listener()
     except Exception as e:
-        cartuli_says("Uncontrolled exception; {0}".format(e))
+        template = "An exception of type {0} occurred. Arguments:\n{1!r}"
+        message = template.format(type(e).__name__, e.args)
+        handle_exception(attempts, "Unknown exception:", message)
+
+
+def handle_exception(attempts, message, e):
+    spinner = Halo(text='', spinner=Spinners.growVertical.value, color='white')
+    spinner.fail(message + " {0}".format(e))
+    spinner.stop()
+    if attempts < MAX_ATTEMPTS:
+        voice_command_listener(attempts + 1)
+    else:
+        spinner.info("Max attempts reached. Listening stopped.")
+        get_input_text()

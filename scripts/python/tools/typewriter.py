@@ -1,6 +1,6 @@
 import time
 
-from mouth.cartuli_says import print_with_black_background
+from mouth.sayer import print_with_black_background
 
 
 def typewriter_print(text, delay=0.02):

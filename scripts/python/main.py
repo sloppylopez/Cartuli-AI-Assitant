@@ -1,25 +1,23 @@
-# from scripts.python.ears.voice_command_listener import voice_command_listener
 import sys
 import threading
 
 import keyboard
+from halo import Halo
+from spinners import Spinners
 
 from ears.voice_command_listener import voice_command_listener
 
+# from spinners import Spinners
+# from halo import Halo
 
-# from ears.voice_command_listener_threaded import voice_recognize_worker
-
-
-def voice_listener_thread():
-    voice_command_listener()
-    keyboard.remove_hotkey("F19")
+MAX_ATTEMPTS = 3
 
 
 def main():
     # Add hotkey on-the-fly, so we can ask another question without running the python again
-    keyboard.add_hotkey("F19", lambda: threading.Thread(target=voice_listener_thread).start())
+    keyboard.add_hotkey("F19", lambda: threading.Thread(target=voice_command_listener(0)).start())
     # voice_recognize_worker() This is to run threaded, but it works way slower for some reason...
-    threading.Thread(target=voice_listener_thread).start()
+    threading.Thread(target=voice_command_listener(0)).start()
     keyboard.wait("esc")  # Wait for the Escape key to be pressed
     keyboard.remove_hotkey("F19")
 

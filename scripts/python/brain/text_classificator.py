@@ -1,7 +1,7 @@
 import spacy
 
-from mouth.chat_gpt_asker import asker
-from mouth.cartuli_says import cartuli_says
+from mouth.asker import asker
+from mouth.sayer import sayer
 from tools.typewriter import typewriter_print
 
 # Load the spaCy English language model
@@ -37,17 +37,14 @@ def classify_command(text):
             elif action == "run_script":
                 run_script(argument)
             elif action == "run_script":
-                call_chat_gpt(argument)
-            else:
-                cartuli_says("Command not recognized from list...")
+                call_chat_gpt(argument, text)
             return
-    cartuli_says("Command not in list... trying with ChatGPT")
     asker(text)
 
 
 # Perform the action: open a program
 def open_program(program):
-    cartuli_says(f"Opening program: {program}")
+    sayer(f"Opening program: {program}")
 
     # Code to open the program goes here
     exit()
@@ -55,7 +52,7 @@ def open_program(program):
 
 # Perform the action: type characters
 def type_chars(chars):
-    cartuli_says(f"Typing: {chars}")
+    sayer(f"Typing: {chars}")
 
     # Code to type the characters goes here
     exit()
@@ -63,7 +60,7 @@ def type_chars(chars):
 
 # Perform the action: search in terminal console
 def search_terminal(query):
-    cartuli_says(f"Searching: {query}")
+    sayer(f"Searching: {query}")
 
     # Code to perform the search in terminal console goes here
     exit()
@@ -71,7 +68,7 @@ def search_terminal(query):
 
 # Perform the action: open the OS default music player
 def open_music_player():
-    cartuli_says("Opening music player")
+    sayer("Opening music player")
 
     # Code to open the OS default music player goes here
     exit()
@@ -79,16 +76,16 @@ def open_music_player():
 
 # Perform the action: run a script
 def run_script(script):
-    cartuli_says(f"Running script: {script}")
+    sayer(f"Running script: {script}")
 
     # Code to run the script goes here
     exit()
 
 
 # Perform the action: run a script
-def call_chat_gpt(script):
-    cartuli_says(f"Running script: {script}")
+def call_chat_gpt(script, text):
+    sayer(f"Running script: {script}")
 
     # Code to run the script goes here
-    asker(None)
+    asker(text)
     exit()
