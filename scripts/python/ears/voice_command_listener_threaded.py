@@ -1,17 +1,15 @@
 #!/usr/bin/env python3
-import sys
+
+from queue import Queue
+from threading import Thread
 
 # NOTE: this example requires PyAudio because it uses the Microphone class
 import keyboard
-import time
-from threading import Thread
-from queue import Queue
-
 import speech_recognition as sr
-
-from scripts.python.hands.get_image import get_file_from_path
-from scripts.python.mouth.cartuli_says import cartuli_says
-from scripts.python.mouth.show_ai_avatar import display_image
+from hands.get_image import get_file_from_path
+from mouth.cartuli_says import cartuli_says
+from mouth.show_ai_avatar import display_image
+from tools.typewriter import typewriter_print
 
 r = sr.Recognizer()
 audio_queue = Queue()
@@ -28,11 +26,12 @@ def recognize_worker():
             # for testing purposes, we're just using the default API key
             # to use another API key, use `r.recognize_google(audio, key="GOOGLE_SPEECH_RECOGNITION_API_KEY")`
             # instead of `r.recognize_google(audio)`
-            cartuli_says("GSR thinks you said " + r.recognize_google(audio))
+            cartuli_says("")
+            typewriter_print("Your said: " + r.recognize_google(audio) + "\n")
         except sr.UnknownValueError:
-            cartuli_says("GSR could not understand audio")
+            typewriter_print("GSR could not understand audio")
         except sr.RequestError as e:
-            cartuli_says("Could not request results from Google Speech Recognition service; {0}".format(e))
+            typewriter_print("Could not request results from Google Speech Recognition service; {0}".format(e))
         audio_queue.task_done()  # mark the audio processing job as completed in the queue
 
 
@@ -40,7 +39,7 @@ def recognize_worker():
 recognize_thread = Thread(target=recognize_worker)
 recognize_thread.daemon = True
 recognize_thread.start()
-
+cartuli_says('Started listening, press F19 to speak.')
 with sr.Microphone() as source:
     is_f19_pressed = False
     once = True
@@ -50,11 +49,13 @@ with sr.Microphone() as source:
                 keyboard.add_hotkey("F19", lambda: display_image(
                     get_file_from_path("../../../images/cartuli-logo-master.png"), keyboard))
                 if once:
-                    cartuli_says('Say something, I\'m all ears...')
+                    cartuli_says("")
+                    typewriter_print('Say something, I\'m all ears...\n')
                     once = False
                 if not is_f19_pressed:
                     audio_queue.put(r.listen(source))
                     is_f19_pressed = True
+                    once = True
             else:
                 keyboard.remove_all_hotkeys()
                 is_f19_pressed = False

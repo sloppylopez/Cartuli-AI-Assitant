@@ -1,7 +1,7 @@
 import speech_recognition as sr
 
 from scripts.python.brain.text_classificator import classify_command
-from scripts.python.hands.copy_to_clipboard import copy_to_clipboard
+from scripts.python.tools.clipboard_copier import copy_to_clipboard
 from scripts.python.mouth.cartuli_says import cartuli_says
 from scripts.python.ears.hear import get_audio
 
