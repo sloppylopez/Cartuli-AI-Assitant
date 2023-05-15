@@ -1,6 +1,7 @@
 profiles
 venv
 */.idea
+.idea
 *.exe
 .iml
 maven_clean_install.bat
