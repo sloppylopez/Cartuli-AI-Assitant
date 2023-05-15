@@ -1,7 +1,8 @@
 import spacy
 
-from scripts.python.mouth.chat_gpt_asker import asker
-from scripts.python.mouth.cartuli_says import cartuli_says, cartuli_types
+from mouth.chat_gpt_asker import asker
+from mouth.cartuli_says import cartuli_says
+from tools.typewriter import typewriter_print
 
 # Load the spaCy English language model
 nlp = spacy.load('en_core_web_sm')
@@ -38,9 +39,9 @@ def classify_command(text):
             elif action == "run_script":
                 call_chat_gpt(argument)
             else:
-                cartuli_types("Command not recognized from list...")
+                cartuli_says("Command not recognized from list...")
             return
-    cartuli_types("Command not in list... trying with ChatGPT")
+    cartuli_says("Command not in list... trying with ChatGPT")
     asker(text)
 
 

@@ -1,14 +1,13 @@
 import os
-import sys
 
 import openai
 import speech_recognition as sr
 
-from scripts.python.ears.hear import get_audio
-from scripts.python.mouth.cartuli_says import cartuli_says
-from scripts.python.mouth.display_notification import display_notification
-from scripts.python.tools.clipboard_copier import copy_to_clipboard
-from scripts.python.tools.typewriter import typewriter_print
+from ears.hear import get_audio
+from mouth.cartuli_says import cartuli_says
+# from mouth.display_notification import display_notification
+from tools.clipboard_copier import copy_to_clipboard
+from tools.typewriter import typewriter_print
 
 
 def asker(text):
@@ -22,7 +21,9 @@ def asker(text):
         # Convert speech to text
         if text is None:
             text = r.recognize_google(audio)
-            cartuli_says(f"You said: {text}")
+            cartuli_says("")
+            typewriter_print(f"You said: {text}")
+
         get_chat_gpt_response(text)
     except sr.UnknownValueError:
         # TODO add fadeout animation
@@ -33,9 +34,7 @@ def asker(text):
 
 def get_open_ai_key():
     api_key = os.getenv('OPENAI_API_KEY')
-    if api_key is not None:
-        cartuli_says("API key found.")
-    else:
+    if api_key is None:
         cartuli_says("OPENAI_API_KEY environment variable is not set.")
         exit()
     return api_key
@@ -55,9 +54,9 @@ def get_chat_gpt_response(text):
         generated_text = response['choices'][0]['text'].strip()
         # Write response text to clipboard
         copy_to_clipboard(generated_text)
-        # Display the recognized text as a notification
-        display_notification(generated_text)
+        # Display the recognized text as a notification (Ditching notifications in favour of terminal)
+        # display_notification(generated_text)
         typewriter_print(generated_text)
-        sys.exit(0)
     else:
-        cartuli_says("No response received from the API.")
+        cartuli_says("")
+        typewriter_print("No response received from the API.")

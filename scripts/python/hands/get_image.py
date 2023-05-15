@@ -11,3 +11,4 @@ def get_file_from_path(final_path):
 
 if __name__ == "__main__":
     get_file_from_path("../../../images/cartuli-logo-master-small.ico")
+    print('Done')

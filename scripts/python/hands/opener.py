@@ -9,9 +9,9 @@ def run_opera_gx():
 
 def open_browser():
     # Check if Opera GX is running
-    opera_gx_title = "Opera GX"
+    opera_gx_title = "GX Corner - Opera"
     opera_gx = gw.getWindowsWithTitle(opera_gx_title)
-
+    gw.getAllTitles()
     if opera_gx:
         # Opera GX is already running
         opera_gx[0].activate()

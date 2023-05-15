@@ -1,4 +1,4 @@
-from scripts.python.mouth.cartuli_says import cartuli_says
+from mouth.cartuli_says import cartuli_says
 import speech_recognition as sr
 
 

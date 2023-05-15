@@ -1,11 +1,11 @@
 import time
 
-from mouth.cartuli_says import cartuli_types, cartuli_says
+from mouth.cartuli_says import print_with_black_background
 
 
 def typewriter_print(text, delay=0.02):
     for char in text:
-        cartuli_types(char)
+        print_with_black_background(char)
         time.sleep(delay)
     print()
 

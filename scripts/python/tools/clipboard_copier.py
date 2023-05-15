@@ -1,6 +1,6 @@
 import pyperclip
 
-from scripts.python.mouth.cartuli_says import cartuli_says
+from mouth.cartuli_says import cartuli_says
 
 
 def copy_to_clipboard(text):
