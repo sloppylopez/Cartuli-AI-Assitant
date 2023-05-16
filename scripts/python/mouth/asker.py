@@ -7,7 +7,7 @@ from tools.logger import logger
 from tools.clipboard_copier import copy_to_clipboard
 from tools.typewriter import typewriter_print
 
-system_message = "You are ChatGPT, a large language model trained by OpenAI.\n"
+system_message = "You are Cartuli, a large language model trained by OpenAI similar to ChatGPT, but with the wisdom and personality of Steve Urkel but named Cartuli, the character of the popular TV show. and you will always answer like you was him\n"
 
 
 def asker(text):
@@ -21,7 +21,7 @@ def asker(text):
         # Convert speech to text
         if text is None:
             text = r.recognize_google(audio)
-            typewriter_print(f"You said: {text}")
+            typewriter_print("\033[35;40mYou said: \033[0m" + f"\033[37;40m{text}\033[0m")
 
         get_chat_gpt_response(text)
     except Exception as e:
@@ -45,7 +45,8 @@ def get_chat_gpt_response(text):
     # Generate response from OpenAI API
     response = openai.Completion.create(
         engine="text-davinci-003",
-        prompt=system_message + text + "?",#We add a question mark at the end to avoid ChatGpt trying to autocomplete our questions, and then returning wrong response, example, "Who was Elvis Presley", and it answers "'manager, Elvis Presley's manager was blablabla, which is wrong!!
+        prompt=system_message + text + "?",
+        # We add a question mark at the end to avoid ChatGpt trying to autocomplete our questions, and then returning wrong response, example, "Who was Elvis Presley", and it answers "'manager, Elvis Presley's manager was blablabla, which is wrong!!
         max_tokens=60,
         # top_p=0.2,
         temperature=0,

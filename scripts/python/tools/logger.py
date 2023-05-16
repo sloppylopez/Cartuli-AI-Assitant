@@ -1,9 +1,9 @@
 def logger(text, color="\033[35;40m"):
-    print_with_black_background(text + "\n", color)
+    print_with_black_background( text + "\n", color)
 
 
 def logger_err(text, color="\033[35;40m"):
-    print_with_black_background(text + "\n", color)
+    print_with_black_background( text + "\n", color)
 
 
 def print_with_black_background(text, color="\033[35;40m"):

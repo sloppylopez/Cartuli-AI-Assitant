@@ -21,7 +21,7 @@ def get_audio():
             r.adjust_for_ambient_noise(source)
             spinner = Halo(text='', spinner=Spinners.growVertical.value, color='cyan', animation='bounce')
             # time.sleep(0.2)  # if we don't do this, we will speak too soon
-            typewriter_print("Speak something...")
+            typewriter_print("Speak something...", 0.02, "\033[35;40m")
             spinner.start()
             audio = r.listen(source, timeout=None, phrase_time_limit=None)
 

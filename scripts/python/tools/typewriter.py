@@ -3,7 +3,7 @@ import time
 from tools.logger import print_with_black_background
 
 
-def typewriter_print(text, delay=0.02, color="\033[35;40m"):
+def typewriter_print(text, delay=0.02, color="\033[32;40m"):
     for char in text:
         print_with_black_background(char, color)
         time.sleep(delay)
