@@ -1,7 +1,5 @@
 import pyperclip
 
-from mouth.sayer import sayer
-
 
 def copy_to_clipboard(text, prefix):
     pyperclip.copy(prefix + text)

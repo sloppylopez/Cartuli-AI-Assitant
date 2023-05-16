@@ -1,15 +1,11 @@
 import os
-
 import openai
 from spinners import Spinners
-
 from ears.hear import get_audio
 from halo import Halo
-from mouth.sayer import sayer
-# from mouth.display_notification import display_notification
+from tools.logger import logger
 from tools.clipboard_copier import copy_to_clipboard
 from tools.typewriter import typewriter_print
-
 
 def asker(text):
     audio = None
@@ -21,39 +17,40 @@ def asker(text):
     try:
         # Convert speech to text
         if text is None:
-            text = r.recognize_google(audio)
+            text = r.recognize_google(audio, language='es-ES')
             typewriter_print(f"You said: {text}")
 
         get_chat_gpt_response(text)
     except Exception as e:
-        sayer(f"Could not request results; {e}")
-
+        spinner = Halo(text='', spinner=Spinners['growVertical'], color='cyan')
+        spinner.fail(f"Could not request results; {e}")
+        spinner.stop()
+        spinner.clear()
 
 def get_open_ai_key():
     api_key = os.getenv('OPENAI_API_KEY')
     if api_key is None:
-        sayer("OPENAI_API_KEY environment variable is not set.")
+        logger("OPENAI_API_KEY environment variable is not set.")
         exit()
     return api_key
 
-
 def get_chat_gpt_response(text):
-    spinner = Halo(text='', spinner=Spinners.growVertical.value, color='white')
+    spinner = Halo(text='', spinner=Spinners['growVertical'], color='cyan')
     spinner.start()
     # Generate response from OpenAI API
     response = openai.Completion.create(
         engine="text-davinci-003",
         prompt=text,
         max_tokens=60,
-        # 💀 Number of tokens(group of words), this is sensitive since the budget depends on this, use with caution!!
-        temperature=0,  # Controls the precision of the response, don't improvise
-        n=1  # number of responses generated per question, we just one the most precise
+        temperature=0.5,
+        n=1
     )
     if 'choices' in response and len(response['choices']) > 0:
         generated_text = response['choices'][0]['text'].strip()
         # Write response text to clipboard
         copy_to_clipboard(generated_text, "Response: ")
-        spinner.stop()  # Type-writing does not play along with animated spinners
+        spinner.stop()
+        spinner.clear()
         typewriter_print(generated_text)
     else:
         spinner.stop()

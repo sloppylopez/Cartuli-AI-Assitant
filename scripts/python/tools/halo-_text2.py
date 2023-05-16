@@ -1,7 +1,7 @@
 from halo import Halo
 from spinners import Spinners
 
-spinner = Halo(text='Such Spins', spinner=Spinners.pong.value)
+spinner = Halo(text='Such Spins', spinner=Spinners.growVertical.value)
 
 try:
     spinner.start()

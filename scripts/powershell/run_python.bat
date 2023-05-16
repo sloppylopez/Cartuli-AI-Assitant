@@ -1,4 +1,3 @@
 @echo off
-title Cartuli Command Interface
-cd C:\elgato\scripts\python
-py -m main
+title Cartuli Terminal
+py C:\elgato\scripts\python\main.py
