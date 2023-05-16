@@ -7,6 +7,9 @@ from tools.logger import logger
 from tools.clipboard_copier import copy_to_clipboard
 from tools.typewriter import typewriter_print
 
+system_message = "You are ChatGPT, a large language model trained by OpenAI.\n"
+
+
 def asker(text):
     audio = None
     r = None
@@ -17,7 +20,7 @@ def asker(text):
     try:
         # Convert speech to text
         if text is None:
-            text = r.recognize_google(audio, language='es-ES')
+            text = r.recognize_google(audio)
             typewriter_print(f"You said: {text}")
 
         get_chat_gpt_response(text)
@@ -27,6 +30,7 @@ def asker(text):
         spinner.stop()
         spinner.clear()
 
+
 def get_open_ai_key():
     api_key = os.getenv('OPENAI_API_KEY')
     if api_key is None:
@@ -34,15 +38,17 @@ def get_open_ai_key():
         exit()
     return api_key
 
+
 def get_chat_gpt_response(text):
     spinner = Halo(text='', spinner=Spinners['growVertical'], color='cyan')
     spinner.start()
     # Generate response from OpenAI API
     response = openai.Completion.create(
         engine="text-davinci-003",
-        prompt=text,
+        prompt=system_message + text + "?",#We add a question mark at the end to avoid ChatGpt trying to autocomplete our questions, and then returning wrong response, example, "Who was Elvis Presley", and it answers "'manager, Elvis Presley's manager was blablabla, which is wrong!!
         max_tokens=60,
-        temperature=0.5,
+        # top_p=0.2,
+        temperature=0,
         n=1
     )
     if 'choices' in response and len(response['choices']) > 0:

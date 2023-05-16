@@ -1,3 +1,5 @@
+import time
+
 from spinners import Spinners
 
 from halo import Halo
@@ -5,21 +7,27 @@ from halo import Halo
 from tools.logger import logger
 import speech_recognition as sr
 
+from tools.typewriter import typewriter_print
+
 
 def get_audio():
+    audio = None
+    spinner = None
     # Set up speech recognition
     r = sr.Recognizer()
     # Listen to user's voice
     try:
-        spinner = Halo(text='', spinner=Spinners.growVertical.value, color='cyan', animation='bounce')
-        spinner.start()
         with sr.Microphone() as source:
             r.adjust_for_ambient_noise(source)
-            logger("Speak something...")
-            audio = r.listen(source, timeout=5, phrase_time_limit=15)
-        stop_and_clear(spinner)
+            spinner = Halo(text='', spinner=Spinners.growVertical.value, color='cyan', animation='bounce')
+            # time.sleep(0.2)  # if we don't do this, we will speak too soon
+            typewriter_print("Speak something...")
+            spinner.start()
+            audio = r.listen(source, timeout=None, phrase_time_limit=None)
+
     except Exception as e:
-        stop_and_clear(spinner)
+        if spinner is not None:
+            stop_and_clear(spinner)
         spinner.fail("\033[31;40m Exception: {0}".format(e) + "\033[0m")
     stop_and_clear(spinner)
     return audio, r
@@ -28,3 +36,7 @@ def get_audio():
 def stop_and_clear(spinner):
     spinner.stop()
     spinner.clear()
+
+
+if __name__ == '__main__':
+    get_audio()
