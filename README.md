@@ -2,12 +2,15 @@
 <html>
 <body>
 <div style="text-align: center;">
-    <img src="images/cartuli-logo-master.png" alt="Cartuli Logo" width="200" height="300">
+    <img src="C:\elgato\videos\It's_alive!.gif" alt="Cartuli AI Assistant" style="max-width: 100%; height: auto;">
 </div>
 
-<h1>Hi!, my name is <strong>Cartuli</strong>.</h1>
 
-<h2>I'm an 'achsually' useful AI Assistant. these are my features so far.</h2>
+
+  <h1>Hi!, my name is <strong>Cartuli</strong>.</h1>
+ <h2>I'm an 'achsually' useful AI Assistant. these are my features so far.</h2>
+
+
 
 <h3>Streamlined Voice Commands with Elgato Stream Deck</h3>
 <p>With <strong>Cartuli</strong>, you can now give voice commands directly by pressing buttons on your Elgato Stream
@@ -230,6 +233,22 @@
     <img src="images/elgato-logo.png" alt="Elgato Logo" width="200" height="200">
     <img src="images/wsl.png" alt="WSL Logo" width="200" height="200">
 </div>
+
+<section>
+  <h2>Image Ownership Disclaimer</h2>
+  <p>
+    The images used in this GitHub repository belong to their respective owners and are used for demonstration purposes only. I, as the creator of the AI bot Assistant named Cartuli, do not claim ownership of these images.
+  </p>
+
+<h3>Copyright Notice</h3>
+  <p>
+    All visual content, including images, logos, and graphics, are the property of their respective owners. These images have been sourced from various publicly available platforms and are used solely for illustrative purposes.
+  </p>
+
+  <p>
+    If you believe that any copyrighted material has been used without proper permission or attribution, please contact me, and I will promptly address the concern.
+  </p>
+</section>
 </body>
 </html>
 
