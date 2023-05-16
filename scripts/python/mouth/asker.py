@@ -61,3 +61,4 @@ def get_chat_gpt_response(text):
     else:
         spinner.stop()
         typewriter_print("No response received from the API.")
+

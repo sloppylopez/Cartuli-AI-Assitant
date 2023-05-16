@@ -2,7 +2,7 @@
 <html>
 <body>
 <div style="text-align: center;">
-    <img src="C:\elgato\videos\It's_alive!.gif" alt="Cartuli AI Assistant" style="max-width: 100%; height: auto;">
+    <img src="https://github.com/sloppylopez/Cartuli-AI-Assitant/blob/main/videos/first_feature.gif" alt="Cartuli AI Assistant" style="max-width: 100%; height: auto;">
 </div>
 
 
