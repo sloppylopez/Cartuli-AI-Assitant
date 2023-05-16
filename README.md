@@ -201,6 +201,28 @@
     <h2>Interest Links</h2>
     <p>https://platform.openai.com/docs/api-reference/completions/create</p>
 </section>
+<h2>Setting up the <code>OPENAI_API_KEY</code> environment variable</h2>
+
+<p>To use this project, you'll need to set up an environment variable called <code>OPENAI_API_KEY</code>. This is a secret API key provided by OpenAI that's required to access their APIs.</p>
+
+<p>Here's how you can obtain your <code>OPENAI_API_KEY</code>:</p>
+
+<ol>
+  <li>Visit the <a href="https://beta.openai.com/docs/api-reference/introduction">OpenAI API website</a>.</li>
+  <li>Click on the "Sign up for OpenAI" button and follow the instructions to create an account.</li>
+  <li>Once you have created an account, log in to the OpenAI API website.</li>
+  <li>Navigate to the "API keys" section of your account dashboard.</li>
+  <li>Click on the "Generate new key" button to create a new API key.</li>
+  <li>Copy the generated API key.</li>
+  <li>Set the <code>OPENAI_API_KEY</code> environment variable in your local environment by running the following command in your terminal (replacing <code>&lt;YOUR_API_KEY&gt;</code> with your actual API key):</li>
+</ol>
+
+<pre><code>export OPENAI_API_KEY=&lt;YOUR_API_KEY&gt;</code></pre>
+
+<p>Alternatively, you can also set the <code>OPENAI_API_KEY</code> environment variable in a configuration file such as <code>.env</code>, which can be loaded by your project's code.</p>
+
+<p>Once you have set up the <code>OPENAI_API_KEY</code> environment variable, you should be able to use the OpenAI APIs in your project.</p>
+
 <div style="text-align: center;">
     <h2>Powered by</h2>
     <img src="images/Python-logo-notext.svg.png" alt="ChatGPT Logo" width="200" height="200">

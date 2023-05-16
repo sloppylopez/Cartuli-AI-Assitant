@@ -1,33 +1,30 @@
-import speech_recognition as sr
+from spinners import Spinners
 
-from scripts.python.brain.text_classificator import classify_command
-from scripts.python.hands.copy_to_clipboard import copy_to_clipboard
-from scripts.python.mouth.cartuli_says import cartuli_says
+from brain.text_classificator import classify_command
+from ears.hear import get_audio
+from halo import Halo
+from hands.input_text import get_input_text
+from tools.clipboard_copier import copy_to_clipboard
 
 
 def voice_command_listener():
-    audio, r = get_audio()
     try:
+        audio, r = get_audio()
         # Convert speech to text
         text = r.recognize_google(audio)
-        cartuli_says(f"You said: {text}")
+        # typewriter_print("You said: " + text, 0.02, "\033[35;40m")
+        print("\033[35;40mYou said: \033[0m" + f"\033[37;40m{text}\033[0m")
         # Write question text to clipboard
-        copy_to_clipboard(text)
+        copy_to_clipboard(text, "Question: ")
         # Classify command text
         classify_command(text)
-    except sr.UnknownValueError:
-        # TODO add fadeout animation
-        cartuli_says("Could not understand audio")
-    except sr.RequestError as e:
-        cartuli_says(f"Could not request results; {e}")
+    except Exception as e:
+        stop_spinner(e)
+        get_input_text()
 
 
-def get_audio():
-    # Set up speech recognition
-    r = sr.Recognizer()
-    # Listen to user's voice
-    with sr.Microphone() as source:
-        r.adjust_for_ambient_noise(source)
-        cartuli_says("Speak something...")
-        audio = r.listen(source, timeout=10000, phrase_time_limit=20000)
-    return audio, r
+def stop_spinner(e):
+    spinner = Halo(text='', spinner=Spinners.growVertical.value, color='cyan')
+    spinner.fail("\033[31;40m" + "Unknown exception:" + " {0}".format(e) + "\033[0m")
+    spinner.stop()
+    spinner.clear()

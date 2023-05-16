@@ -1,10 +1,24 @@
-from scripts.python.ears.voice_command_listener import voice_command_listener
-from scripts.python.mouth.cartuli_says import cartuli_says
+import sys
+import threading
+
+import keyboard
+
+from ears.voice_command_listener import voice_command_listener
+
+
+def register_hotkey():
+    keyboard.add_hotkey("F19", lambda: threading.Thread(target=voice_command_listener).start())
 
 
 def main():
-    cartuli_says("¡Cómo están los máquinas!")
-    voice_command_listener()
+    register_hotkey()
+    threading.Thread(target=voice_command_listener).start()
+    keyboard.wait("esc")
+    keyboard.unregister_hotkey("F19")
+    sys.exit(0)
+
 
 if __name__ == "__main__":
     main()
+
+print("after __name__ guard")

@@ -7,7 +7,7 @@ import tkinter as tk
 from PIL import Image, ImageTk
 
 from scripts.python.hands.get_image import get_file_from_path
-from scripts.python.mouth.cartuli_says import cartuli_says
+from tools.logger import logger
 
 image_folder = get_file_from_path("../../../images")
 
@@ -61,7 +61,7 @@ def show_image_on_window(image_path):
     global gif_image, label, update_gif
     if image_path is None:
         image_path = get_image_path(image_path)
-        cartuli_says(f"Image folder path: {image_path}")
+        logger(f"Image folder path: {image_path}")
     # Load the image
     if image_path.lower().endswith(".gif"):
         # Load and display an animated GIF

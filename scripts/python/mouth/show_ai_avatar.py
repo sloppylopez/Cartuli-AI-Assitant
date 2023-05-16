@@ -1,11 +1,10 @@
-import sys
 import time
 import tkinter as tk
 
 import keyboard
 from PIL import Image, ImageTk
 
-from scripts.python.hands.get_image import get_file_from_path
+from hands.get_image import get_file_from_path
 
 
 def fade_in(window):
@@ -30,11 +29,12 @@ def fade_out(window):
         pass
 
 
-def display_image(image_path):
+def display_image(image_path, keyboard):
+    # Start displaying the image when F19 key is pressed
     root = tk.Tk()
     root.attributes("-alpha", 0)  # Set initial transparency to 0
     root.overrideredirect(True)  # Remove window decorations
-    root.geometry("+0+0")  # Place window at the top-left corner of the screen
+    root.geometry("+0+0")  # Place window at the down-right corner of the screen
 
     image = Image.open(image_path)
     width, height = image.size
@@ -53,8 +53,8 @@ def display_image(image_path):
     canvas.create_image(0, 0, anchor="nw", image=photo)
     root.attributes("-topmost", True)  # Keep the window on top of other windows
     root.update()
-
-    fade_in(root)
+    if keyboard.is_pressed('f19'):
+        fade_in(root)
 
     while True:
         if not root.state() == "normal" or not root.winfo_viewable():
@@ -64,13 +64,12 @@ def display_image(image_path):
             break
         root.update_idletasks()
         root.update()
-        time.sleep(0.01)
+        time.sleep(0.1)
 
     fade_out(root)
-    sys.exit(0)  # Exit with status code 0 after fade-out animation is finished
 
 
-# Start displaying the image when F19 key is pressed
-keyboard.add_hotkey("F19", lambda: display_image(get_file_from_path("../../../images/cartuli-logo-master.png")))
-
-keyboard.wait("esc")  # Wait until the 'esc' key is pressed
+if __name__ == "__main__":
+    # display_image(get_file_from_path("../../../images/cartuli-logo-master.png"))
+    keyboard.add_hotkey("F19", lambda: display_image(get_file_from_path("../../../images/cartuli-logo-master.png")))
+    keyboard.wait("esc")  # Wait until the 'esc' key is pressed, this is to debug comfortably
