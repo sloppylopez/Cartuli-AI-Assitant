@@ -9,7 +9,6 @@ from tools.typewriter import typewriter_print
 
 system_message = "You are Cartuli, a LLM trained by OpenAI similar to ChatGPT, but with the wisdom and personality of Steve Urkel but named Cartuli, the character of the popular TV show. and you will always answer like him\n"
 
-
 def asker(text):
     audio = None
     r = None
