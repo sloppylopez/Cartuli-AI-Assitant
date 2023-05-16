@@ -183,22 +183,19 @@
 
 <section>
     <h2>Current State of Affairs</h2>
-    <p>At this stage, we are actively gathering Python, PS1, and BAT scripts that will enable us to implement all the
-        exciting features described earlier. However, it's important to note that the project's components, namely the
-        "brain," "eyes," "hands," and "ears," are not yet fully connected.</p>
-    <p>We are working tirelessly to bring these components together and create a cohesive and seamless experience with
-        <strong>Cartuli</strong>. Our goal is to ensure that each part of <strong>Cartuli</strong> works in perfect
-        harmony, allowing you to unleash
-        the full potential of this AI Assistant.</p>
-    <p>In addition to the software development, we are also dedicated to creating a delightful Stream Deck profile that
-        seamlessly integrates with the Elgato Stream Deck and its variants, including the Stream Deck + and Stream Deck
-        XL. This will enable you to have a personalized and intuitive interface for interacting with
-        <strong>Cartuli</strong> and
-        performing tasks effortlessly.</p>
-    <p>As we continue to make progress, we will keep the community updated on the development process and share exciting
-        updates along the way. Together, we will bring <strong>Cartuli</strong> to life and revolutionize the way you
-        interact with AI
-        Assistants.</p>
+  <p>Cartuli AI Assistant is here, ready to make your life easier and more productive than ever before!</p>
+
+  <h3>Feature 1: Seamless Windows 11 Terminal Integration</h3>
+  <p>With Cartuli AI Assistant, you can now unleash the power of your Windows 11 default terminal with just the press of a button!</p>
+
+  <p>Simply press the number a key on your keyboard/elgato Stream Deck, and Cartuli will eagerly be listening to your commands.</p>
+
+  <p>Don't worry if you're not sure what to say! or if he does not understand you, after few seconds you will be able to enter the command manually.</p>
+
+  <p>And that's just the beginning! We have many more exciting features in the pipeline, designed to revolutionize your digital experience.</p>
+
+  <p>Stay tuned for future updates as we continue to enhance Cartuli AI Assistant, making it your ultimate digital companion for productivity, entertainment, and so much more!</p>
+
 </section>
 <section>
     <h2>Interest Links</h2>
