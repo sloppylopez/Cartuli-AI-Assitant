@@ -54,6 +54,8 @@ conversation = "User: Hello\nChatGPT: Hi, how can I assist you today?"
 
 while True:
     user_input = convert_speech_to_text()
+    if not user_input:
+        user_input = input("Enter your message manually: ")
     if user_input:
         doc = nlp(user_input)
         user_input = " ".join(token.text for token in doc)
