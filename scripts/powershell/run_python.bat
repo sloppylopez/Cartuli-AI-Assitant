@@ -1,3 +1,3 @@
 @echo off
 title Cartuli Terminal
-py C:\elgato\scripts\python\main.py
+py C:\Users\sergi\PycharmProjects\Cartuli-AI-Assitant\scripts\python\main.py

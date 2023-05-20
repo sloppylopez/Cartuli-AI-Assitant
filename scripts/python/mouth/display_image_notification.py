@@ -6,7 +6,7 @@ import tkinter as tk
 
 from PIL import Image, ImageTk
 
-from scripts.python.hands.get_image import get_file_from_path
+from hands.get_image import get_file_from_path
 from tools.logger import logger
 
 image_folder = get_file_from_path("../../../images")

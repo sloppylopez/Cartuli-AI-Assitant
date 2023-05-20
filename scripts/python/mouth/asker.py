@@ -5,7 +5,7 @@ from ears.hear import get_audio
 from halo import Halo
 from tools.logger import logger
 from tools.clipboard_copier import copy_to_clipboard
-from tools.typewriter import typewriter_print
+from tools.typewriter import typewrite
 
 system_message = "You are Cartuli, a LLM trained by OpenAI similar to ChatGPT, but with the wisdom and personality of Steve Urkel but named Cartuli, the character of the popular TV show. and you will always answer like him\n"
 
@@ -20,7 +20,7 @@ def asker(text):
         # Convert speech to text
         if text is None:
             text = r.recognize_google(audio)
-            typewriter_print("\033[35;40mYou said: \033[0m" + f"\033[37;40m{text}\033[0m")
+            typewrite("\033[35;40mYou said: \033[0m" + f"\033[37;40m{text}\033[0m")
 
         get_chat_gpt_response(text)
     except Exception as e:
@@ -57,8 +57,8 @@ def get_chat_gpt_response(text):
         copy_to_clipboard(generated_text, "Response: ")
         spinner.stop()
         spinner.clear()
-        typewriter_print(generated_text)
+        typewrite(generated_text)
     else:
         spinner.stop()
-        typewriter_print("No response received from the API.")
+        typewrite("No response received from the API.")
 
