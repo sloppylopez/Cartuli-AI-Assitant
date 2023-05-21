@@ -6,13 +6,18 @@ from mouth.asker import get_open_ai_key
 
 
 def read_files(folder_path):
-    # Read all files in the given folder
-    file_contents = {}
-    for file_name in os.listdir(folder_path):
-        file_path = os.path.join(folder_path, file_name)
-        if os.path.isfile(file_path):
-            with open(file_path, 'r') as file:
-                file_contents[file_name] = file.read()
+    # Check if folder_path is a file
+    if os.path.isfile(folder_path):
+        with open(folder_path, 'r') as file:
+            file_contents = {os.path.basename(folder_path): file.read()}
+    else:
+        # Read all files in the given folder
+        file_contents = {}
+        for file_name in os.listdir(folder_path):
+            file_path = os.path.join(folder_path, file_name)
+            if os.path.isfile(file_path):
+                with open(file_path, 'r') as file:
+                    file_contents[file_name] = file.read()
     return file_contents
 
 
@@ -25,7 +30,7 @@ def generate_responses(file_contents):
     for file_name, content in file_contents.items():
         prompt = "Refactor this code as a Senior Engineer, avoid shadowing " \
                  "variables if possible, write code with the minimum amount of " \
-                 "python warnings and with correct python default indentation" \
+                 "warnings, and with correct python default indentation" \
                  " ``` " + content + "```"
         token_number = count_tokens(prompt)
         response = openai.Completion.create(
@@ -41,6 +46,10 @@ def generate_responses(file_contents):
 
 
 def output_responses(responses, folder_path):
+    # Check if folder_path is a file
+    if os.path.isfile(folder_path):
+        folder_path = os.path.dirname(folder_path)
+
     # Create the "generated" folder
     output_folder = os.path.join(folder_path, "ai_refactored")
     os.makedirs(output_folder, exist_ok=True)
@@ -54,7 +63,7 @@ def output_responses(responses, folder_path):
 
 
 # Main script
-folder_path = "C:/Users/sergi/PycharmProjects/Cartuli-AI-Assitant/scripts/python/code_to_be_refactored"
+folder_path = "C:/Users/sergi/PycharmProjects/Cartuli-AI-Assitant/scripts/python/code_to_be_refactored/ginea_pig.py"
 file_contents = read_files(folder_path)
 responses = generate_responses(file_contents)
 output_responses(responses, folder_path)
