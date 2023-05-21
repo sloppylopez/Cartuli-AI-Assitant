@@ -4,6 +4,7 @@ import openai
 from halo import Halo
 from spinners import Spinners
 
+from brain.token_counter import count_tokens
 from ears.hear import get_audio
 from hands.copy_to_clipboard import copy_to_clipboard_prefix
 from tools.logger import logger
@@ -66,24 +67,7 @@ def get_chat_gpt_response(text):
         typewrite("No response received from the API.")
 
 
-def chat_with_openai(messages):
-    # Generate a response from OpenAI
-    print(messages)
-    message2 = """refactor this code ```def calculate_average(numbers):
-                sum = 0
-                count = 0
-                for i in range(len(numbers)):
-                    sum = sum + numbers[i]
-                    count = count + 1
-                average = sum / count
-                return average
-            
-            
-            # Test the function
-            nums = [2, 4, 6, 8, 10]
-            result = calculate_average(nums)
-            print("The average is: " + str(result))
-            ```"""
+def chat_with_openai(prompt):
     # response = openai.Completion.create(
     #     engine='text-davinci-003',
     #     prompt=messages + "Refactor the above code",
@@ -95,24 +79,18 @@ def chat_with_openai(messages):
     #     frequency_penalty=0.0,
     #     presence_penalty=0.0
     # )
-    #
-    # response = openai.Completion.create(
-    #     engine="text-davinci-002",
-    #     prompt=message2,
-    #     # max_tokens=100
-    # )
 
-    response2 = openai.Completion.create(
+    response = openai.Completion.create(
         engine="text-davinci-003",
-        prompt=message2,
+        prompt=prompt,
         # We add a question mark at the end to avoid ChatGpt trying to autocomplete our questions, and then returning wrong response, example, "Who was Elvis Presley", and it answers "'manager, Elvis Presley's manager was blablabla, which is wrong!!
-        max_tokens=60,
+        max_tokens=count_tokens(prompt) * 2,
         # top_p=0.2,
         temperature=0,
         n=1)
 
     # Extract the generated message from the response
     # generated_message = response2.choices[0].text.strip().split('\n')[-1]
-    generated_text = response2['choices'][0]['text'].strip()
+    generated_text = response['choices'][0]['text'].strip()
 
     return generated_text

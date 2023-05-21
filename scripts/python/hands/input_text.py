@@ -1,6 +1,6 @@
 import sys
 
-from brain.text_classificator import classify_command
+from brain.text_classificator import classify_and_run_command
 
 from tools.logger import logger
 from tools.clipboard_copier import copy_to_clipboard
@@ -18,6 +18,6 @@ def get_input_text():
             # Write question text to clipboard
             copy_to_clipboard(text, "Question: ")
             # Classify command text
-            classify_command(text)
+            classify_and_run_command(text)
         else:
             get_input_text()

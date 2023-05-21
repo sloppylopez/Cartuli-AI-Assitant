@@ -201,6 +201,7 @@
     <h2>Interest Links</h2>
     <p>https://platform.openai.com/docs/api-reference/completions/create</p>
     <p>https://www.youtube.com/watch?v=dIUTsFT2MeQ</p>
+    <p>https://www.youtube.com/watch?v=Qos2rG3zVAM</p>
 </section>
 <h2>Setting up the <code>OPENAI_API_KEY</code> environment variable</h2>
 

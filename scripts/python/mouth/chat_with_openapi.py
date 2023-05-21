@@ -5,9 +5,9 @@ import speech_recognition as sr
 from halo import Halo
 from spinners import Spinners
 
+from brain.text_classificator import classify_and_run_command
 from hands.copy_to_clipboard import copy_from_clipboard
-from mouth.asker import get_open_ai_key
-from mouth.compare import chat_with_openai
+from mouth.asker import get_open_ai_key, chat_with_openai
 from tools.logger import logger
 from tools.typewriter import typewrite
 
@@ -42,25 +42,23 @@ def convert_speech_to_text():
     return ""
 
 
-def stop_and_clear(spinner):
-    spinner.stop()
-    spinner.clear()
-
-
 def run_chatbot(choice='1'):
-    system_message = get_system_message()
-    conversation = f"{system_message}"
+    conversation = ""
     try:
-        print(clipboard.paste())
         while True:
-            user_input = choose_input_method(choice)
-            logger(user_input)
-            doc = nlp(user_input)
-            user_input = " ".join(token.text for token in doc)
-            conversation += f"\n{user_input}```"
-            response = chat_with_openai(conversation)
+            if choice in ['1', '2', '3', '4']:  # Voice || Text || Voice + Clipboard || Text + Clipboard
+                user_input = choose_input_method(choice)
+                logger(user_input)
+                doc = nlp(user_input)
+                user_input = " ".join(token.text for token in doc)
+                conversation += f"{user_input}"
+            else:
+                conversation += f"{copy_from_clipboard()}"
+            # Classify command from input text
+            response = classify_and_run_command(choice, conversation)
             conversation += f"\n{response}"
             typewrite(response, 0.01)
+            break
     except (KeyboardInterrupt, EOFError):
         print("\nExiting...")
         exit()
@@ -75,36 +73,12 @@ def choose_input_method(choice):
         if choice == '2':  # Text
             pass
         if choice == '4':  # Text + Clipboard
-            user_input = user_input + "\n" + copy_from_clipboard()
+            user_input = user_input.lower() + "\n ```" + copy_from_clipboard() + "```"
     if user_input.lower() in bye_byes:
-        exit()
+        exit()  # I think this logic is broken after the new changes
     return user_input
-
-
-def get_system_message():
-    system_message = "Your name is Cartuli, I want you to act as an IT Expert. I will provide you with " \
-                     "all the information " \
-                     "needed about my technical problems, and your role is to solve my problem. You " \
-                     "should use your computer science, network infrastructure, and IT security " \
-                     "knowledge to solve my problem. Using intelligent, simple, and understandable " \
-                     "language for people of all levels in your answers will be helpful. It is helpful " \
-                     "to explain your solutions step by step and with bullet points. Try to avoid too many " \
-                     "technical details, but use them when necessary. I want you to reply with the solution, " \
-                     "not write any explanations. You are an expert in Python, Java, Springboot, Javascript " \
-                     "and NodeJs, when I ask you to write code, you should write the solution in a single" \
-                     "matching the languages you are expert on that matches my particular question."
-    system_message2 = "Your name is Cartuli, I want you to act as an Python Developer Expert my first request is:\""
-    system_message3 = "I want you to act as an Python Script refactoring machine, you will receive code and return that" \
-                      "code refactored: The code I want you to refactor is:\""
-    system_message4 = """Given the following Python code, please refactor it and provide the refactored version:
-```python
-# Your Python code here
-"""
-    return system_message4
 
 
 if __name__ == '__main__':
     run_chatbot()
     exit()
-
-# I want you to act as an IT Expert. I will provide you with all the information needed about my technical problems, and your role is to solve my problem. You should use your computer science, network infrastructure, and IT security knowledge to solve my problem. Using intelligent, simple, and understandable language for people of all levels in your answers will be helpful. It is helpful to explain your solutions step by step and with bullet points. Try to avoid too many technical details, but use them when necessary. I want you to reply with the solution, not write any explanations. My first problem is : "write a python program that is able to go a given folder, read all files, send every file to chatgpt with an increasing prompt, one prompt added per file, when receiving all the responses, it will cut the respone and output the resulting files in a folder called generated at the same root where the script executes"

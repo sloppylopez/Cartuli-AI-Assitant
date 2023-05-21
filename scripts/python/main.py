@@ -2,7 +2,6 @@ import sys
 
 import keyboard
 
-from mouth.chat_with_openapi import run_chatbot
 from mouth.menu_options import menu_options
 
 
