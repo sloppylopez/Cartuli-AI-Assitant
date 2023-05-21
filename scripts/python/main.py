@@ -1,13 +1,13 @@
 import sys
-import threading
 
 import keyboard
 
 from mouth.chat_with_openapi import run_chatbot
+from mouth.menu_options import menu_options
 
 
 def main():
-    run_chatbot()
+    menu_options()
     keyboard.wait("esc")
     sys.exit(0)
 
