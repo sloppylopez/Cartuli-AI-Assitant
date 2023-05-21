@@ -1,11 +1,8 @@
 def calculate_average(numbers):
-    sum = 0
-    count = 0
+    total = 0
     for number in numbers:
-        sum += number
-        count += 1
-    average = sum / count
-    return average
+        total += number
+    return total / len(numbers)
 
 # Test the function
 nums = [2, 4, 6, 8, 10]

@@ -1,4 +1,6 @@
 import spacy
+
+from hands.refactor import output_responses
 from mouth.asker import asker, chat_with_openai
 from tools.logger import logger
 
@@ -124,5 +126,8 @@ def refactor_code(text):
     # Code to run the script goes here
     # asker(text)
     response = chat_with_openai(text)
-
+    # generated_folder_path = "C:/Users/sergi/PycharmProjects/Cartuli-AI-Assitant/scripts/python/generated"
+    # with open(generated_folder_path, "w") as file:
+    #     file.write(response)
+    #     output_responses()
     return response

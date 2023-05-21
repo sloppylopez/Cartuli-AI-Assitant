@@ -1,9 +1,8 @@
 import sys
 
 from brain.text_classificator import classify_and_run_command
-
+from hands.copy_to_clipboard import copy_to_clipboard_prefix
 from tools.logger import logger
-from tools.clipboard_copier import copy_to_clipboard
 
 
 def get_input_text():
@@ -16,7 +15,7 @@ def get_input_text():
         if text != '' and not None:
             logger("Sending to ChatGPT: " + text)
             # Write question text to clipboard
-            copy_to_clipboard(text, "Question: ")
+            copy_to_clipboard_prefix(text, "Question: ")
             # Classify command text
             classify_and_run_command(text)
         else:

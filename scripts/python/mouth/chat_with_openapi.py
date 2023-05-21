@@ -8,7 +8,6 @@ from brain.text_classificator import classify_and_run_command
 from hands.copy_to_clipboard import copy_from_clipboard
 from mouth.asker import get_open_ai_key
 from tools.logger import logger
-from tools.typewriter import typewrite
 
 bye_byes = 'bye', 'exit', 'quit', 'ciao', 'goodbye', 'good bye', 'good-bye', 'bye-bye', ''
 
@@ -50,10 +49,12 @@ def run_chatbot(conversation='', choice='1'):
                 doc = nlp(user_input)
                 user_input = " ".join(token.text for token in doc)
                 conversation += f"\nUser: {user_input}"
+                # Classify command from input text
+                response = classify_and_run_command(choice, conversation)
             else:
-                conversation += f"{copy_from_clipboard()}"
-            # Classify command from input text
-            response = classify_and_run_command(choice, conversation)
+                conversation += f"\nUser: {copy_from_clipboard()}"
+                # Classify command from input text
+                response = classify_and_run_command(choice, copy_from_clipboard())
             conversation += f"System: \n{response}"
             # logger(response)
             return conversation
