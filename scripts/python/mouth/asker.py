@@ -10,7 +10,10 @@ from hands.copy_to_clipboard import copy_to_clipboard_prefix
 from tools.logger import logger
 from tools.typewriter import typewrite
 
-system_message = "SYSTEM: You are named Cartuli, a LLM trained by OpenAI similar to ChatGPT, but with the wisdom and personality of Steve Urkel but named Cartuli, the character of the popular TV show. and you will always answer like him\n"
+system_message = "\nSYSTEM: You are named Cartuli, " \
+                 "a LLM trained by OpenAI similar to ChatGPT, " \
+                 "you will give concise answers, going straight" \
+                 " to the point but giving a sufficient response:\n"
 
 
 def asker(text):
@@ -26,7 +29,7 @@ def asker(text):
             text = r.recognize_google(audio)
             typewrite("\033[35;40mYou said: \033[0m" + f"\033[37;40m{text}\033[0m")
 
-        get_chat_gpt_response(text)
+        return get_chat_gpt_response(text)
     except Exception as e:
         spinner = Halo(text='', spinner=Spinners['growVertical'], color='cyan')
         spinner.fail(f"Could not request results; {e}")
@@ -46,9 +49,10 @@ def get_chat_gpt_response(text):
     spinner = Halo(text='', spinner=Spinners['growVertical'], color='cyan')
     spinner.start()
     # Generate response from OpenAI API
+    prompt = system_message + text + "?"
     response = openai.Completion.create(
         engine="text-davinci-003",
-        prompt=system_message + text + "?",
+        prompt=prompt,
         # We add a question mark at the end to avoid ChatGpt trying to autocomplete our questions, and then returning wrong response, example, "Who was Elvis Presley", and it answers "'manager, Elvis Presley's manager was blablabla, which is wrong!!
         max_tokens=60,
         # top_p=0.2,
@@ -61,10 +65,12 @@ def get_chat_gpt_response(text):
         copy_to_clipboard_prefix(generated_text, "Response: ")
         spinner.stop()
         spinner.clear()
-        typewrite(generated_text)
+        logger(generated_text)
+        return generated_text
     else:
         spinner.stop()
         typewrite("No response received from the API.")
+        return None
 
 
 def chat_with_openai(prompt):

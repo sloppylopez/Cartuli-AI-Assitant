@@ -41,23 +41,22 @@ def convert_speech_to_text():
     return ""
 
 
-def run_chatbot(choice='1'):
-    conversation = ""
+def run_chatbot(conversation='', choice='1'):
     try:
         while True:
             if choice in ['1', '2', '3', '4']:  # Voice || Text || Voice + Clipboard || Text + Clipboard
                 user_input = choose_input_method(choice)
-                logger(user_input)
+                logger("You said: ".join(user_input))
                 doc = nlp(user_input)
                 user_input = " ".join(token.text for token in doc)
-                conversation += f"{user_input}"
+                conversation += f"\nUser: {user_input}"
             else:
                 conversation += f"{copy_from_clipboard()}"
             # Classify command from input text
             response = classify_and_run_command(choice, conversation)
-            conversation += f"\n{response}"
-            logger(response)
-            break
+            conversation += f"System: \n{response}"
+            # logger(response)
+            return conversation
     except (KeyboardInterrupt, EOFError):
         print("\nExiting...")
         exit()

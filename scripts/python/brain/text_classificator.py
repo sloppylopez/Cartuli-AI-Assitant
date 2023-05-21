@@ -72,7 +72,7 @@ def classify_and_run_command(choice, conversation):
         elif action == "refactor_code":
             return refactor_code(conversation)
     else:
-        asker(conversation)
+        return asker(conversation)
 
 
 # Perform the action: open a program
@@ -124,4 +124,5 @@ def refactor_code(text):
     # Code to run the script goes here
     # asker(text)
     response = chat_with_openai(text)
+
     return response
