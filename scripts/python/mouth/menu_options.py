@@ -1,4 +1,3 @@
-from hands.copy_to_clipboard import copy_to_clipboard
 from mouth.chat_with_openapi import run_chatbot
 from tools.logger import logger
 
