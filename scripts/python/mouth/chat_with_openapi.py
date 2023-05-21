@@ -56,7 +56,7 @@ def run_chatbot(choice='1'):
             # Classify command from input text
             response = classify_and_run_command(choice, conversation)
             conversation += f"\n{response}"
-            typewrite(response, 0.01)
+            logger(response)
             break
     except (KeyboardInterrupt, EOFError):
         print("\nExiting...")

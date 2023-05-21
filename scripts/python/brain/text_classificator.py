@@ -38,8 +38,9 @@ def get_system_message(choice, messages):
 """
     prompt = ""
     if choice == '5':  # Refactor + Clipboard
-        prompt = "Given the following Python code, please refactor it and provide the refactored version:" \
-                 ", avoid shadowing variables from outer scope if possible," \
+        prompt = "Given the following Python code, please refactor it and provide the refactored version," \
+                 "avoid shadowing variables from outer scope if possible," \
+                 "write the code in the most legible way possible for humans:\n" \
                  " ```\n" + messages + "\n```"
     return prompt
 
