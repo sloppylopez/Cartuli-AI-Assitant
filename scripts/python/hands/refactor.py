@@ -1,47 +1,49 @@
+import hashlib
 import os
+
 import openai
 
 from brain.token_counter import count_tokens
-from mouth.asker import get_open_ai_key
 
 
 def read_files(folder_path):
     # Check if folder_path is a file
     if os.path.isfile(folder_path):
-        with open(folder_path, 'r') as file:
-            file_contents = {os.path.basename(folder_path): file.read()}
+        with open(folder_path, 'rb') as file:
+            file_content = file.read()
+            file_hash = hashlib.sha256(file_content).hexdigest()
+            file_contents = {file_hash: (file_content, os.path.basename(folder_path))}
     else:
         # Read all files in the given folder
         file_contents = {}
         for file_name in os.listdir(folder_path):
             file_path = os.path.join(folder_path, file_name)
             if os.path.isfile(file_path):
-                with open(file_path, 'r') as file:
-                    file_contents[file_name] = file.read()
+                with open(file_path, 'rb') as file:
+                    file_content = file.read()
+                    file_hash = hashlib.sha256(file_content).hexdigest()
+                    file_contents[file_hash] = (file_content, file_name)
     return file_contents
 
 
 def generate_responses(file_contents):
-    # Set up OpenAI API credentials
-    openai.api_key = get_open_ai_key()
-
     # Generate responses for each file content with increasing prompts
     responses = {}
-    for file_name, content in file_contents.items():
+    for file_hash, file_content_tuple in file_contents.items():
+        file_content = file_content_tuple[0]
+        file_name = file_content_tuple[1]
         prompt = "Refactor this code as a Senior Engineer, avoid shadowing " \
-                 "variables if possible, write code with the minimum amount of " \
-                 "warnings, and with correct python default indentation" \
-                 " ``` " + content + "```"
-        token_number = count_tokens(prompt)
+                 "variables from outer scope if possible, respect original code indentation," \
+                 "do not rename methods, for example if a methods is called read_files2 do not change it to read_files" \
+                 " ```\n" + file_content.decode() + "\n```"
         response = openai.Completion.create(
             engine="text-davinci-003",
             prompt=prompt,
-            max_tokens=token_number,
-            # top_p=0.2,
+            max_tokens=count_tokens(prompt) * 2,
             temperature=0,
             n=1
         )
-        responses[file_name] = response.choices[0].text
+        responses[file_name] = response.choices[0].text.strip()
     return responses
 
 
@@ -63,7 +65,7 @@ def output_responses(responses, folder_path):
 
 
 # Main script
-folder_path = "C:/Users/sergi/PycharmProjects/Cartuli-AI-Assitant/scripts/python/code_to_be_refactored/ginea_pig.py"
-file_contents = read_files(folder_path)
-responses = generate_responses(file_contents)
-output_responses(responses, folder_path)
+refactor_path = "C:/Users/sergi/PycharmProjects/Cartuli-AI-Assitant/scripts/python/hands/refactor.py"
+file_contents = read_files(refactor_path)
+generated_responses = generate_responses(file_contents)
+output_responses(generated_responses, refactor_path)
