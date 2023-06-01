@@ -2,10 +2,17 @@ import hashlib
 import json
 import os
 
+from tools.logger import logger
+
 
 def read_json_file(file_path):
-    with open(file_path, 'r') as file:
-        data = json.load(file)
+    data = {}
+    try:
+        with open(file_path, 'r') as file:
+            data = json.load(file)
+    except Exception as e:
+        logger(f"Could not read file {file_path}; {e}")
+        pass
     return data
 
 

@@ -1,5 +1,6 @@
 import spacy
 
+from brain.is_system_path import is_system_path
 from hands.refactor import output_responses
 from mouth.asker import asker, chat_with_openai
 from tools.logger import logger
@@ -16,6 +17,7 @@ commands = {
     "run": "run_script",
     "chatGPT": "call_chatGPT",
     "refactor": "refactor_code",
+    "refactor location": "refactor_location",
 }
 
 
@@ -50,14 +52,17 @@ def get_system_message(choice, messages):
 # Process user input and perform the corresponding action
 def classify_and_run_command(choice, conversation):
     argument = ''
+    command = ''
     doc = nlp(conversation)
     first_token = doc[0].text.lower() if len(doc) > 0 else None
     if choice == '5':  # Refactor + Clipboard
-        first_token = 'refactor'
-    if first_token in commands:
-        action = commands[first_token]
-        if choice != '5':  # Refactor + Clipboard
-            argument = conversation.split(first_token, 1)[1].strip()  # Extract the argument after the command
+        command = 'refactor'
+    if choice == '6' and is_system_path(first_token):  # Refactor Location + Clipboard
+        command = 'refactor_location'
+    if command in commands:
+        action = commands[command]
+        if choice != '5' and choice != '6':  # Refactor Text + Clipboard && Refactor Location + Clipboard
+            argument = conversation.split(command, 1)[1].strip()  # Extract the argument after the command
         conversation = get_system_message(choice, conversation)
         if action == "type_chars":
             type_chars(argument)
@@ -72,6 +77,9 @@ def classify_and_run_command(choice, conversation):
         elif action == "call_chatGPT":
             call_chat_gpt(argument, conversation)
         elif action == "refactor_code":
+            return refactor_code(conversation)
+        elif action == "refactor_location":
+
             return refactor_code(conversation)
     else:
         return asker(conversation)
