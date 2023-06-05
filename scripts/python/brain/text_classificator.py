@@ -1,5 +1,6 @@
 import spacy
 
+from brain.git_patcher import get_patch
 from brain.system_path_checker import is_system_path
 from hands.refactor import output_responses, refactor_destination
 from mouth.asker import asker, chat_with_openai
@@ -83,7 +84,8 @@ def classify_and_run_command(choice, conversation):
             if is_system_path(conversation):
                 # read from clipboard, check thatis valid path, call git_patcher to create a patch automagically from the
                 # refactored code coming from chatgpt
-                return refactor_destination(conversation)
+                refactor_destination(conversation)
+                return get_patch(conversation)
     else:
         return asker(conversation)
 

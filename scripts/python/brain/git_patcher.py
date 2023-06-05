@@ -22,15 +22,15 @@ def git_diff(destination):
 def get_patch(to_be_refactored_folder):
     ai_refactored_folder = os.path.join(to_be_refactored_folder, "ai_refactored")
     os.makedirs(ai_refactored_folder, exist_ok=True)
-    origin = os.path.join(ai_refactored_folder, "ginea_pig_prime_numbers.rfct.py")
-    destination = os.path.join(to_be_refactored_folder, "ginea_pig_prime_numbers.py")
-    destination_backup = os.path.join(to_be_refactored_folder, "ginea_pig_prime_numbers.py.bak")
+    origin = os.path.join(ai_refactored_folder, "ginea_pig.rfct.py")
+    destination = os.path.join(to_be_refactored_folder, "ginea_pig.py")
+    destination_backup = os.path.join(to_be_refactored_folder, "ginea_pig.py.bak")
     ai_refactored_code = read_file(origin)
 
     backup_and_overwrite_file(destination, ai_refactored_code)
     git_patch = git_diff(destination)
     restore_file_backup(destination_backup, destination)
-    patch_file = os.path.join(ai_refactored_folder, "ginea_pig_prime_numbers.py.patch")
+    patch_file = os.path.join(ai_refactored_folder, "ginea_pig.py.patch")
 
     if git_patch is not None:
         with open(patch_file, 'w') as file:

@@ -10,7 +10,7 @@ from eyes.read_file import read_files_and_hash, read_json_file
 from hands.get_image import get_full_from_relative
 from hands.reformat_2_pep8 import format_code
 from hands.transform_list_to_dict import list_2_dict
-from tools.logger import logger
+from tools.logger import logger, logger_err
 
 
 def generate_refactored_code(file_contents):
@@ -36,7 +36,7 @@ def generate_refactored_code(file_contents):
             logger("Usage of the request:\n" + str(response.usage))
             responses[file_name] = format_code(response.choices[0].text.strip())
     except Exception as e:
-        print(e)
+        logger_err(e)
     return responses
 
 

@@ -1,10 +1,10 @@
 def calculate_average(numbers):
-    sum = 0
+    sum_ = 0
     count = 0
     for i in range(len(numbers)):
-        sum = sum + numbers[i]
-        count = count + 1
-    average = sum / count
+        sum_ += numbers[i]
+        count += 1
+    average = sum_ / count
     return average
 
 # Test the function
