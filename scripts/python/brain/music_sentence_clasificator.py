@@ -1,5 +1,6 @@
 import spacy
 
+
 def extract_info(sentence):
     nlp = spacy.load("en_core_web_sm")
     doc = nlp(sentence)
@@ -16,6 +17,7 @@ def extract_info(sentence):
             author = doc[token.i + 4].text
 
     return app_name, song_name, author
+
 
 if __name__ == "__main__":
     # Example usage

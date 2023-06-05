@@ -1,12 +1,10 @@
-[
-  [
-    "19960bfcb5a3998168f27f9f359e06ac12ca0e6fd25fd9eb6af83307088fced1",
-    "def calculate_average(numbers: list) -> float:\r\n    total = 0\r\n    for number in numbers:\r\n        total += number\r\n    if numbers:\r\n        return total / len(numbers)\r\n    else:\r\n        return 0\r\n\r\n# Test the function\r\nnums = [2, 4, 6, 8, 10]\r\nresult = calculate_average(nums)\r\nprint(f\"The average is: {result}\")",
-    "ginea_pig.py"
+{
+  "5fba0b25f5c2cdda985f4b61b1c825494b959d1a63c1f751b160e0b3fffc8591": [
+    "def calculate_average(numbers: list) -> float:\r\r\n    total = 0\r\r\n    for number in numbers:\r\r\n        total += number\r\r\n    if numbers:\r\r\n        return total / len(numbers)\r\r\n    else:\r\r\n        return 0\r\r\n\r\r\nnums = [2, 4, 6, 8, 10]\r\r\nresult = calculate_average(nums)\r\r\nprint(f\"The average is: {result:.2f}\")",
+    "ginea_pig.rfct.py"
   ],
-  [
-    "6515116c90b1433aef904d909c78833778fe4d46ae0dbb6c2b3a5e14a6a67802",
-    "def is_prime(number):\r\n    \"\"\"Check if a number is prime or not\"\"\"\r\n    if number <= 1:\r\n        return False\r\n    for i in range(2, int(number ** 0.5) + 1):\r\n        if number % i == 0:\r\n            return False\r\n    return True\r\n\r\n\r\ndef calculate_primes(limit):\r\n    \"\"\"Calculate prime numbers up to a given limit\"\"\"\r\n    primes = []\r\n    for num in range(2, limit):\r\n        if is_prime(num):\r\n            primes.append(num)\r\n    return primes\r\n\r\n\r\nif __name__ == \"__main__\":\r\n    limit = int(input(\"Enter the limit (less than 10000): \"))\r\n    if limit > 10000:\r\n        print(\"Limit should be less than 10000\")\r\n    else:\r\n        primes = calculate_primes(limit)\r\n        print(f\"Prime numbers up to {limit} are:\")\r\n        print(*primes, sep=', ')",
-    "ginea_pig_prime_numbers.py"
+  "c30c823d7d4c6d592ed4e0c52126bc7a80b31402335ec3b5e75a42da97285393": [
+    "def is_prime(number):\r\r\n    \"\"\"Check if a number is prime or not\"\"\"\r\r\n    if number <= 1:\r\r\n        return False\r\r\n    for i in range(2, int(number ** 0.5) + 1):\r\r\n        if number % i == 0:\r\r\n            return False\r\r\n    return True\r\r\n\r\r\n\r\r\ndef calculate_primes(limit):\r\r\n    \"\"\"Calculate prime numbers up to a given limit\"\"\"\r\r\n    primes = []\r\r\n    for num in range(2, limit):\r\r\n        if is_prime(num):\r\r\n            primes.append(num)\r\r\n    return primes\r\r\n\r\r\n\r\r\nif __name__ == \"__main__\":\r\r\n    limit = int(input(\"Enter the limit (less than 10000): \"))\r\r\n    if limit > 10000:\r\r\n        print(\"Limit should be less than 10000\")\r\r\n    else:\r\r\n        primes = calculate_primes(limit)\r\r\n        print(f\"Prime numbers up to {limit} are:\")\r\r\n        print(*primes, sep=', ')",
+    "ginea_pig_prime_numbers.rfct.py"
   ]
-]
+}

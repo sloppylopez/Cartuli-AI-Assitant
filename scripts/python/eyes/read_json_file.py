@@ -44,6 +44,15 @@ def read_file_binary(file_path):
     return file_content
 
 
+def read_file(file_path):
+    try:
+        with open(file_path, 'r') as file:
+            file_contents = file.read()
+        return file_contents
+    except IOError:
+        print(f"Error: Could not read file '{file_path}'")
+
+
 if __name__ == "__main__":
     # Example usage:
     json_file_path = 'C:/Users/sergi/PycharmProjects/Cartuli-AI-Assitant/scripts/python/.cartuli/long_term_hash_memory.json'

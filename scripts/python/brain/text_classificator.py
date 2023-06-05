@@ -1,6 +1,6 @@
 import spacy
 
-from brain.is_system_path import is_system_path
+from brain.system_path_checker import is_system_path
 from hands.refactor import output_responses
 from mouth.asker import asker, chat_with_openai
 from tools.logger import logger

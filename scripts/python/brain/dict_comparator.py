@@ -1,3 +1,6 @@
+from tools.logger import logger
+
+
 def compare_dictionaries(dict1, dict2):
     matching_values = []
     for key in dict1:
@@ -8,11 +11,14 @@ def compare_dictionaries(dict1, dict2):
 
 def return_non_matching_values(dict1, dict2):
     non_matching_values = {}
-    print(dict1)
-    print(dict2)
-    for value in dict1:  # Use 'value' instead of 'key' for iterating over list elements
-        if value[0] not in dict2:
-            non_matching_values[value] = value
+    try:
+        logger("long_term_hash_memory: " + str(dict1))
+        logger("target_file_contents: " + str(dict2))
+        for value in dict2:  # Use 'value' instead of 'key' for iterating over list elements
+            if value not in dict1:
+                non_matching_values[value] = dict2[value]
+    except Exception as e:
+        logger(e)
 
     return non_matching_values
 
