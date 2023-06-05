@@ -11,6 +11,7 @@ def format_code(code):
     cleaned_code = cleaned_code.replace('\r\n', '')
     cleaned_code = cleaned_code.replace('\n\n', '\n')
     logger(cleaned_code)
+    return cleaned_code
 
 
 if __name__ == "__main__":

@@ -6,7 +6,7 @@ import openai
 
 from brain.dict_comparator import return_non_matching_values
 from brain.token_counter import count_tokens
-from eyes.read_json_file import read_files_and_hash, read_json_file
+from eyes.read_file import read_files_and_hash, read_json_file
 from hands.get_image import get_full_from_relative
 from hands.reformat_2_pep8 import format_code
 from hands.transform_list_to_dict import list_2_dict

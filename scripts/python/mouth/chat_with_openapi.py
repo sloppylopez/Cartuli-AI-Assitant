@@ -5,7 +5,7 @@ from halo import Halo
 from spinners import Spinners
 
 from brain.text_classificator import classify_and_run_command
-from hands.copy_to_clipboard import copy_from_clipboard
+from tools.clipboard import copy_from_clipboard
 from mouth.asker import get_open_ai_key
 from tools.logger import logger
 

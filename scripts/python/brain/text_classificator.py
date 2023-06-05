@@ -1,8 +1,9 @@
 import spacy
 
 from brain.system_path_checker import is_system_path
-from hands.refactor import output_responses
+from hands.refactor import output_responses, refactor_destination
 from mouth.asker import asker, chat_with_openai
+from tools.clipboard import copy_from_clipboard
 from tools.logger import logger
 
 # Load the spaCy English language model
@@ -57,13 +58,13 @@ def classify_and_run_command(choice, conversation):
     first_token = doc[0].text.lower() if len(doc) > 0 else None
     if choice == '5':  # Refactor + Clipboard
         command = 'refactor'
-    if choice == '6' and is_system_path(first_token):  # Refactor Location + Clipboard
-        command = 'refactor_location'
+    if choice == '6':  # Refactor Location + Clipboard
+        command = 'refactor location'
     if command in commands:
         action = commands[command]
         if choice != '5' and choice != '6':  # Refactor Text + Clipboard && Refactor Location + Clipboard
             argument = conversation.split(command, 1)[1].strip()  # Extract the argument after the command
-        conversation = get_system_message(choice, conversation)
+            conversation = get_system_message(choice, conversation)
         if action == "type_chars":
             type_chars(argument)
         elif action == "open":
@@ -79,8 +80,10 @@ def classify_and_run_command(choice, conversation):
         elif action == "refactor_code":
             return refactor_code(conversation)
         elif action == "refactor_location":
-
-            return refactor_code(conversation)
+            if is_system_path(conversation):
+                # read from clipboard, check thatis valid path, call git_patcher to create a patch automagically from the
+                # refactored code coming from chatgpt
+                return refactor_destination(conversation)
     else:
         return asker(conversation)
 

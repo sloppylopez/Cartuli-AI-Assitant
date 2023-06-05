@@ -1,7 +1,7 @@
 import sys
 
 from brain.text_classificator import classify_and_run_command
-from hands.copy_to_clipboard import copy_to_clipboard_prefix
+from tools.clipboard import copy_to_clipboard_prefix
 from tools.logger import logger
 
 
