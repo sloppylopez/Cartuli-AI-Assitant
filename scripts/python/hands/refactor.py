@@ -4,11 +4,13 @@ import os
 import autopep8
 import openai
 
+from brain.dict_2_array import dict_2_array
 from brain.dict_comparator import return_non_matching_values
+from brain.git_patcher import get_patch
 from brain.token_counter import count_tokens
 from eyes.read_file import read_files_and_hash, read_json_file
 from hands.get_image import get_full_from_relative
-from hands.reformat_2_pep8 import format_code
+from hands.reformat_2_pep8 import format_code, replace_lf_with_crlf, replace_crlf_with_lf
 from hands.transform_list_to_dict import list_2_dict
 from tools.logger import logger, logger_err
 
@@ -25,7 +27,7 @@ def generate_refactored_code(file_contents):
                      "Never ever add the special char '\\r' for indentation between lines, this is important." \
                      "Do not include comments or explanations in the refactored code.\n" \
                      "Code:" \
-                     " \n" + file_content + "\n"
+                     " \n" + replace_lf_with_crlf(file_content) + "\n"
             response = openai.Completion.create(
                 engine="text-davinci-003",
                 prompt=prompt,
@@ -42,7 +44,6 @@ def generate_refactored_code(file_contents):
 
 def output_responses(responses, output_folder):
     os.makedirs(output_folder, exist_ok=True)
-
     # Output the resulting files with the responses
     for file_name, response in responses.items():
         base_name, extension = os.path.splitext(file_name)
@@ -58,20 +59,11 @@ def refactor_files(target_file_contents):
     # Generate the refactored code from non-matching values
     refactored_codes = generate_refactored_code(target_file_contents)
     # Create the "ai_refactored" folder in the same directory as the target folder
-    output_folder = os.path.join(target_folder_path, "ai_refactored")
+    output_folder = os.path.join(to_be_refactored_folder, "ai_refactored")
     # Output the refactored code
     output_responses(refactored_codes, output_folder)
     # Update the long term memory
     output_content = read_files_and_hash(output_folder)
-    # Remove ".rfct" from the file names
-    # for key in output_content:
-    #     file_name = output_content[key][1]
-    #     if file_name.endswith(".rfct.py"):
-    #         output_content[key][1] = file_name[:-8] + ".py"
-    # Convert the tuples to lists for modification
-    # updated_data = [
-    #     (key, value[0], value [1][:-8] + ".py") if value[1].endswith(".rfct.py") else (key, value[0], value[1]) for
-    #     key, value in output_content.items()]
     file_contents_json = json.dumps(output_content)  # Convert dictionary to JSON string
     # Write the long term memory to the hidden folder
     os.makedirs(hidden_folder_path, exist_ok=True)
@@ -79,15 +71,15 @@ def refactor_files(target_file_contents):
         file.write(file_contents_json)
 
 
-def refactor_destination(target_folder_relative_path):
-    global hidden_folder_path, hidden_file_path, target_folder_path, non_matching_values
+def refactor_destination(folder_path):
+    global hidden_folder_path, hidden_file_path, to_be_refactored_folder, non_matching_values
     # Read long term memory, to see which files have been refactored already
     hidden_folder_path = get_full_from_relative("../.cartuli")
     hidden_file_path = os.path.join(hidden_folder_path, "long_term_hash_memory.json")
     long_term_hash_memory = read_json_file(hidden_file_path)
     # Read the target folder
-    target_folder_path = get_full_from_relative(target_folder_relative_path)
-    target_file_contents = read_files_and_hash(target_folder_path)
+    to_be_refactored_folder = get_full_from_relative(folder_path)
+    target_file_contents = read_files_and_hash(to_be_refactored_folder)
     # Compare the two dictionaries and get only the non-matching values
     non_matching_values = return_non_matching_values(long_term_hash_memory, target_file_contents)
     if len(non_matching_values) > 0:
@@ -97,9 +89,11 @@ def refactor_destination(target_folder_relative_path):
             len(long_term_hash_memory) == 0:
         refactor_files(non_matching_values)
     else:
-        # user_input = input("No new files to refactor, do you want to do the refactor anyway? y/n: ")
-        # if user_input.lower() == "y":
-        refactor_files(long_term_hash_memory)
+        user_input = input("No new files to refactor, do you want to do the refactor anyway? y/n: ")
+        if user_input.lower() == "y":
+            refactor_files(long_term_hash_memory)
+    file_array = dict_2_array(non_matching_values or target_file_contents)
+    get_patch(to_be_refactored_folder, file_array)
 
 
 if __name__ == "__main__":

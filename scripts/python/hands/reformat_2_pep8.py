@@ -3,6 +3,16 @@ import autopep8
 from tools.logger import logger
 
 
+def replace_lf_with_crlf(input_string):
+    crlf_string = input_string.replace('\n', '\r\n')
+    return crlf_string
+
+
+def replace_crlf_with_lf(input_string):
+    lf_string = input_string.replace('\r\n', '\n')
+    return lf_string
+
+
 def format_code(code):
     logger(code)
     formatted_code = autopep8.fix_code(code)

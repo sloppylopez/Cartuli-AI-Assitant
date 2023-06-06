@@ -1,4 +1,4 @@
-def is_prime(number):
+def is_prime2(number):
     if number <= 1:
         return False
     for i in range(2, int(number ** 0.5) + 1):
@@ -6,14 +6,12 @@ def is_prime(number):
             return False
     return True
 
-
 def calculate_primes(limit):
     primes = []
     for num in range(2, limit):
-        if is_prime(num):
+        if is_prime2(num):
             primes.append(num)
     return primes
-
 
 if __name__ == "__main__":
     limit = int(input("Enter the limit (less than 10000): "))

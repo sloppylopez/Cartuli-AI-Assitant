@@ -82,10 +82,8 @@ def classify_and_run_command(choice, conversation):
             return refactor_code(conversation)
         elif action == "refactor_location":
             if is_system_path(conversation):
-                # read from clipboard, check thatis valid path, call git_patcher to create a patch automagically from the
-                # refactored code coming from chatgpt
                 refactor_destination(conversation)
-                return get_patch(conversation)
+                return
     else:
         return asker(conversation)
 
