@@ -33,7 +33,7 @@ def get_patch(to_be_refactored_folder, file_array):
         """Backup and overwrite file with refactored code, create a patch and restore the original file"""
         backup_and_overwrite_file(destination, ai_refactored_code)
         """Replace LF with CRLF to avoid randomness in the diff patch"""
-        # replace_file_lf_with_crlf(to_be_refactored_folder + "\\" + file_name)
+        replace_file_lf_with_crlf(to_be_refactored_folder + "\\" + file_name)
         """Get git diff patch"""
         git_patch = git_diff(destination)
         """Write patch to file"""
@@ -41,7 +41,7 @@ def get_patch(to_be_refactored_folder, file_array):
         """Restore original file"""
         restore_file_backup(destination_backup, destination)
         """Replace LF with CRLF to avoid randomness in the diff patch"""
-        # replace_file_lf_with_crlf(to_be_refactored_folder + "\\" + file_name)
+        replace_file_lf_with_crlf(to_be_refactored_folder + "\\" + file_name)
 
 
 def save_patch(ai_refactored_folder, git_patch, patch_file):
