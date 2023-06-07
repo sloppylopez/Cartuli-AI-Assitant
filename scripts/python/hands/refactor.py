@@ -54,8 +54,8 @@ def output_responses(responses, output_folder):
 def refactor_files(target_file_contents):
     # Generate the refactored code from non-matching values
     refactored_codes = generate_refactored_code(target_file_contents)
-    # Create the "ai_refactored" folder in the same directory as the target folder
-    output_folder = os.path.join(to_be_refactored_folder, "ai_refactored")
+    # Create the ".ai_refactored" folder in the same directory as the target folder
+    output_folder = os.path.join(to_be_refactored_folder, ".ai_refactored")
     # Output the refactored code
     output_responses(refactored_codes, output_folder)
     # Update the long term memory
@@ -83,13 +83,17 @@ def refactor_destination(folder_path):
     if non_matching_values is not None and \
             len(non_matching_values) > 0 or \
             len(long_term_hash_memory) == 0:
-        refactor_files(non_matching_values)
+        refactor_and_patch(non_matching_values, target_file_contents, to_be_refactored_folder)
     else:
         user_input = input("No new files to refactor, do you want to do the refactor anyway? y/n: ")
         if user_input.lower() == "y":
-            refactor_files(long_term_hash_memory)
-            file_array = dict_2_array(non_matching_values or target_file_contents)
-            get_patch(to_be_refactored_folder, file_array)
+            refactor_and_patch(non_matching_values, target_file_contents, to_be_refactored_folder)
+
+
+def refactor_and_patch(non_matching_values, target_file_contents, to_be_refactored_folder):
+    refactor_files(non_matching_values)
+    file_array = dict_2_array(non_matching_values or target_file_contents)
+    get_patch(to_be_refactored_folder, file_array)
 
 
 if __name__ == "__main__":

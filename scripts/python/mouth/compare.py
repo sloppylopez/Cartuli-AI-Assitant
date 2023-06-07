@@ -42,7 +42,7 @@ def generate_responses(file_contents):
 
 def output_responses(responses, folder_path):
     # Create the "generated" folder
-    output_folder = os.path.join(folder_path, "ai_refactored")
+    output_folder = os.path.join(folder_path, ".ai_refactored")
     os.makedirs(output_folder, exist_ok=True)
 
     # Output the resulting files with the responses

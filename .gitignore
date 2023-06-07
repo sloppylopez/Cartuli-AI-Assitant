@@ -9,3 +9,4 @@ __pycache__
 outputs
 **/*.rfct.py
 **/*.py.patch
+.ai_refactored

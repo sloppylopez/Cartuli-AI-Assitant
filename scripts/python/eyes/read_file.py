@@ -2,6 +2,7 @@ import hashlib
 import json
 import os
 
+from hands.reformat_2_pep8 import replace_string_lf_with_crlf
 from tools.logger import logger
 
 

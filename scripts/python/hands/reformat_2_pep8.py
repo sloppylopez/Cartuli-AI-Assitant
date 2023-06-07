@@ -35,7 +35,7 @@ def replace_file_crlf_to_lf(file_path):
     print("Line endings converted successfully.")
 
 
-def replace_crlf_with_lf(input_string):
+def replace_string_crlf_with_lf(input_string):
     lf_string = input_string.replace('\r\n', '\n')
     return lf_string
 

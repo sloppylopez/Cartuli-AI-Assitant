@@ -24,7 +24,7 @@ def get_patch(to_be_refactored_folder, file_array):
         file_name_split = file_name.split(".")
         refactored_file, backup_file, patch_file = generate_file_variations(file_name_split[0],
                                                                             "." + file_name_split[1])
-        ai_refactored_folder = os.path.join(to_be_refactored_folder, "ai_refactored")
+        ai_refactored_folder = os.path.join(to_be_refactored_folder, ".ai_refactored")
         os.makedirs(ai_refactored_folder, exist_ok=True)
         origin = os.path.join(ai_refactored_folder, refactored_file)
         destination = os.path.join(to_be_refactored_folder, file_name)
@@ -45,11 +45,14 @@ def get_patch(to_be_refactored_folder, file_array):
 
 
 def save_patch(ai_refactored_folder, git_patch, patch_file):
-    patch_file = os.path.join(ai_refactored_folder, patch_file)
     if git_patch is not None:
-        with open(patch_file, 'w') as file:
-            file.write(git_patch)
-    logger(f"Patch saved to: {patch_file}")
+        patch_file = os.path.join(ai_refactored_folder, patch_file)
+        if git_patch is not None:
+            with open(patch_file, 'w') as file:
+                file.write(git_patch)
+        logger(f"Patch saved to: {patch_file}")
+    else:
+        logger("No patch generated")
 
 
 def generate_file_variations(file_name, extension):
