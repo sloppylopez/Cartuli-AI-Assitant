@@ -1,1 +1,6 @@
-{"f39a3f46969815baff2eae5e673544a243a7b1e30b5661326aceed1b6f58495a": ["import math\r\n\r\ndef calculate_area(radius):\r\n    # Consistent naming convention (snake_case)\r\n    radius_squared = radius * radius\r\n    circle_area = math.pi * radius_squared\r\n    return circle_area\r\n\r\n# Function call with an argument\r\ncalculate_area(5)\r\n\r\n# Type checking or error handling for invalid input\r\ntry:\r\n    calculate_area(int(input(\"Enter a number: \")))\r\nexcept ValueError:\r\n    print(\"Invalid input. Please enter a valid number.\")", "ginea_pig.rfct.py"]}
+{
+  "f39a3f46969815baff2eae5e673544a243a7b1e30b5661326aceed1b6f58495a": [
+    "import math\r\n\r\ndef calculate_area(radius):\r\n    # Consistent naming convention (snake_case)\r\n    radius_squared = radius * radius\r\n    circle_area = math.pi * radius_squared\r\n    return circle_area\r\n\r\n# Function call with an argument\r\ncalculate_area(5)\r\n\r\n# Type checking or error handling for invalid input\r\ntry:\r\n    calculate_area(int(input(\"Enter a number: \")))\r\nexcept ValueError:\r\n    print(\"Invalid input. Please enter a valid number.\")",
+    "ginea_pig.rfct.py"
+  ]
+}
