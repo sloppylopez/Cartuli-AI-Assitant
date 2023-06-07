@@ -88,8 +88,8 @@ def refactor_destination(folder_path):
         user_input = input("No new files to refactor, do you want to do the refactor anyway? y/n: ")
         if user_input.lower() == "y":
             refactor_files(long_term_hash_memory)
-    file_array = dict_2_array(non_matching_values or target_file_contents)
-    get_patch(to_be_refactored_folder, file_array)
+            file_array = dict_2_array(non_matching_values or target_file_contents)
+            get_patch(to_be_refactored_folder, file_array)
 
 
 if __name__ == "__main__":
