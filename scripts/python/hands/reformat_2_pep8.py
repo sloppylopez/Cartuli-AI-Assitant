@@ -41,13 +41,13 @@ def replace_crlf_with_lf(input_string):
 
 
 def format_code(code):
-    logger(code)
+    # logger(code)
     formatted_code = autopep8.fix_code(code)
-    logger(formatted_code)
+    # logger(formatted_code)
     cleaned_code = formatted_code.replace('\r', '')
     cleaned_code = cleaned_code.replace('\r\n', '')
     cleaned_code = cleaned_code.replace('\n\n', '\n')
-    logger(cleaned_code)
+    # logger(cleaned_code)
     return cleaned_code
 
 

@@ -1,10 +1,8 @@
 import spacy
 
-from brain.git_patcher import get_patch
-from brain.system_path_checker import is_system_path
-from hands.refactor import output_responses, refactor_destination
+from tools.system_path_checker import is_system_path
+from hands.refactor import refactor_destination
 from mouth.asker import asker, chat_with_openai
-from tools.clipboard import copy_from_clipboard
 from tools.logger import logger
 
 # Load the spaCy English language model
@@ -133,12 +131,6 @@ def call_chat_gpt(script, text):
 
 # Perform the action: refactor code
 def refactor_code(text):
-    logger(f"{text}")
-    # Code to run the script goes here
-    # asker(text)
+    # logger(f"{text}")
     response = chat_with_openai(text)
-    # generated_folder_path = "C:/Users/sergi/PycharmProjects/Cartuli-AI-Assitant/scripts/python/generated"
-    # with open(generated_folder_path, "w") as file:
-    #     file.write(response)
-    #     output_responses()
     return response

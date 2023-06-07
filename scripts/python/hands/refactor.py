@@ -5,7 +5,7 @@ import openai
 
 from brain.dict_2_array import dict_2_array
 from brain.dict_comparator import return_non_matching_values
-from brain.git_patcher import get_patch
+from tools.git_patcher import get_patch
 from brain.token_counter import count_tokens
 from eyes.read_file import read_files_and_hash, read_json_file
 from hands.get_image import get_full_from_relative
@@ -32,7 +32,7 @@ def generate_refactored_code(file_contents):
                 n=1
             )
             logger("Usage of the request:\n" + str(response.usage))
-            responses[file_name] = format_code(response.choices[0].text.strip())
+            responses[file_name] = response.choices[0].text.strip()
     except Exception as e:
         logger_err(e)
     return responses
