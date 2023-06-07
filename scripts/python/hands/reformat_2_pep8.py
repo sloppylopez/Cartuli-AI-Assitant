@@ -1,11 +1,38 @@
 import autopep8
+import os
 
 from tools.logger import logger
 
 
-def replace_lf_with_crlf(input_string):
+def replace_string_lf_with_crlf(input_string):
     crlf_string = input_string.replace('\n', '\r\n')
     return crlf_string
+
+
+def replace_file_lf_with_crlf(file_path):
+    # Read the file
+    with open(file_path, 'rb') as file:
+        content = file.read()
+
+    # Replace LF with CRLF
+    updated_content = content.replace(b'\n', b'\r\n')
+
+    # Write the updated content back to the file
+    with open(file_path, 'wb') as file:
+        file.write(updated_content)
+
+
+def replace_file_crlf_to_lf(file_path):
+    temp_file = file_path + '.tmp'
+
+    with open(file_path, 'rb') as input_file, open(temp_file, 'wb') as output_file:
+        for line in input_file:
+            line = line.replace(b'\r\n', b'\n')
+            output_file.write(line)
+
+    # Replace the original file with the temporary file
+    os.replace(temp_file, file_path)
+    print("Line endings converted successfully.")
 
 
 def replace_crlf_with_lf(input_string):

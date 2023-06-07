@@ -1,7 +1,6 @@
 import json
 import os
 
-import autopep8
 import openai
 
 from brain.dict_2_array import dict_2_array
@@ -10,8 +9,7 @@ from brain.git_patcher import get_patch
 from brain.token_counter import count_tokens
 from eyes.read_file import read_files_and_hash, read_json_file
 from hands.get_image import get_full_from_relative
-from hands.reformat_2_pep8 import format_code, replace_lf_with_crlf, replace_crlf_with_lf
-from hands.transform_list_to_dict import list_2_dict
+from hands.reformat_2_pep8 import format_code, replace_string_lf_with_crlf
 from tools.logger import logger, logger_err
 
 
@@ -23,11 +21,9 @@ def generate_refactored_code(file_contents):
             file_content = file_content_tuple[0]
             file_name = file_content_tuple[1]
             prompt = "Refactor the given Python code to adhere to PEP 8 guidelines. " \
-                     "Make sure to not modify any existing comments or explanations from the code. " \
-                     "Never ever add the special char '\\r' for indentation between lines, this is important." \
-                     "Do not include comments or explanations in the refactored code.\n" \
+                     "Make sure to not modify any existing comments or explanations from the code if possible. " \
                      "Code:" \
-                     " \n" + replace_lf_with_crlf(file_content) + "\n"
+                     " \n\n```" + replace_string_lf_with_crlf(file_content) + "```\n"
             response = openai.Completion.create(
                 engine="text-davinci-003",
                 prompt=prompt,
@@ -52,7 +48,7 @@ def output_responses(responses, output_folder):
         else:
             output_file = os.path.join(output_folder, base_name + ".rfct" + extension)
         with open(output_file, 'w') as file:
-            file.write(response.strip())
+            file.write(response)
 
 
 def refactor_files(target_file_contents):
