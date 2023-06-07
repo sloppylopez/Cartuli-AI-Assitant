@@ -91,7 +91,7 @@ def refactor_destination(folder_path):
 
 
 def refactor_and_patch(non_matching_values, target_file_contents, to_be_refactored_folder):
-    refactor_files(non_matching_values)
+    refactor_files(non_matching_values or target_file_contents)
     file_array = dict_2_array(non_matching_values or target_file_contents)
     get_patch(to_be_refactored_folder, file_array)
 
