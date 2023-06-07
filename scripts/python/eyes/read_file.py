@@ -2,7 +2,7 @@ import hashlib
 import json
 import os
 
-from hands.reformat_2_pep8 import replace_string_lf_with_crlf
+from hands.reformat_2_pep8 import replace_file_lf_with_crlf
 from tools.logger import logger
 
 
@@ -21,6 +21,7 @@ def read_files_and_hash(folder_path):
     # Check if folder_path is a file
     if os.path.isfile(folder_path):
         with open(folder_path, 'rb') as file_to_refactor:
+            replace_file_lf_with_crlf(file_to_refactor)
             file_content = file_to_refactor.read()
             file_hash = hashlib.sha256(file_content).hexdigest()
             file_contents = {file_hash: (file_content.decode(), os.path.basename(folder_path))}
@@ -30,6 +31,7 @@ def read_files_and_hash(folder_path):
         for file_name in os.listdir(folder_path):
             file_path = os.path.join(folder_path, file_name)
             if os.path.isfile(file_path):
+                replace_file_lf_with_crlf(file_path)
                 with open(file_path, 'rb') as file_to_refactor:
                     file_content = file_to_refactor.read()
                     file_hash = hashlib.sha256(file_content).hexdigest()
