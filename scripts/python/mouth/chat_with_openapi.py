@@ -45,7 +45,7 @@ def run_chatbot(conversation='', choice='1'):
         while True:
             if choice in ['1', '2', '3', '4']:  # Voice || Text || Voice + Clipboard || Text + Clipboard
                 user_input = choose_input_method(choice)
-                logger("You said: ".join(user_input))
+                logger("You said: " + user_input)
                 doc = nlp(user_input)
                 user_input = " ".join(token.text for token in doc)
                 conversation += f"\nUser: {user_input}"
