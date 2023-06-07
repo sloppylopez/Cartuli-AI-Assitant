@@ -1,7 +1,7 @@
 import math
 
 def calculate_area(radius):
-    # Consistent naming convention (snake_case)
+    """Calculate the area of a circle given its radius."""
     radius_squared = radius * radius
     circle_area = math.pi * radius_squared
     return circle_area
