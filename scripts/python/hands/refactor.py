@@ -21,6 +21,7 @@ def generate_refactored_code(file_contents):
             file_content = file_content_tuple[0]
             file_name = file_content_tuple[1]
             prompt = "Refactor the given Python code to adhere to PEP 8 guidelines. " \
+                     "Do not write comments in the code ever.\n" \
                      "If you find comments like this '# Flaw: ' followed by text, " \
                      "assume they are recommendations on how to fix the code, you should follow them if possible.\n" \
                      "Code:" \
