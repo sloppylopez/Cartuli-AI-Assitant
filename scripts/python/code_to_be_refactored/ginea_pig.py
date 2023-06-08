@@ -16,10 +16,7 @@ def calculate_area(radius):
     return circle_area
 
 
-# Flaw 5: Missing function call with an argument
-calculate_area()
-
-# Flaw 6: Incorrect parameter type (expects a number, not a string)
+# Flaw 5: Incorrect parameter type (expects a number, not a string)
 calculate_area("5")
 
-# Flaw 7: No type checking or error handling for invalid input
+# Flaw 6: No type checking or error handling for invalid input
