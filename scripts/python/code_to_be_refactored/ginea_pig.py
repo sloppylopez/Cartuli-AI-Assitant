@@ -1,7 +1,7 @@
 import math
 
 def calculate_area(radius):
-    # Use snake_case for consistent naming convention
+    """Use snake_case for consistent naming convention"""
     result = math.pi * radius ** 2
     return result
 
