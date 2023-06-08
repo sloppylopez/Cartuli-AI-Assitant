@@ -22,6 +22,7 @@ def generate_refactored_code(file_contents):
             file_name = file_content_tuple[1]
             prompt = "Refactor the given Python code to adhere to PEP 8 guidelines. " \
                      "Make sure to not modify any existing comments or explanations from the code if possible. " \
+                     "Never write code back that does not compile.\n" \
                      "Code:" \
                      " \n\n```" + replace_string_lf_with_crlf(file_content) + "```\n"
             response = openai.Completion.create(
