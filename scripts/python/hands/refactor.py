@@ -23,7 +23,8 @@ def generate_refactored_code(file_contents):
             prompt = "Refactor the given Python code to adhere to PEP 8 guidelines. " \
                      "Do not write comments in the code ever.\n" \
                      "If you find comments like this '# Flaw: ' followed by text, " \
-                     "assume they are recommendations on how to fix the code, you should follow them if possible.\n" \
+                     "assume they are recommendations on how to fix the code, you should " \
+                     "follow them if possible and remove them\n" \
                      "Code:" \
                      " \n\n```" + replace_string_lf_with_crlf(file_content) + "```\n"
             response = openai.Completion.create(
