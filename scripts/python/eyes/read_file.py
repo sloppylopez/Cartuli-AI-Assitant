@@ -3,6 +3,7 @@ import json
 import os
 
 from eyes.detect_line_separators import detect_line_separator
+from hands.get_image import get_full_from_relative
 from hands.reformat_2_pep8 import replace_file_lf_with_crlf
 from tools.logger import logger
 
@@ -61,6 +62,6 @@ def read_file(file_path):
 
 if __name__ == "__main__":
     # Example usage:
-    json_file_path = 'C:/Users/sergi/PycharmProjects/Cartuli-AI-Assitant/scripts/python/.cartuli/long_term_hash_memory.json'
+    json_file_path = get_full_from_relative(r"..\.cartuli\long_term_hash_memory.json")
     json_data = read_json_file(json_file_path)
     print(list(json_data.keys())[0])

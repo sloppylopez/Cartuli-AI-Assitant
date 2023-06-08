@@ -3,7 +3,8 @@ import subprocess
 
 from eyes.read_file import read_file
 from hands.back_up_and_overwrite_file import backup_and_overwrite_file, restore_file_backup
-from hands.reformat_2_pep8 import replace_file_lf_with_crlf, replace_file_crlf_to_lf
+from hands.get_image import get_full_from_relative
+from hands.reformat_2_pep8 import replace_file_crlf_to_lf
 from tools.logger import logger
 
 
@@ -65,5 +66,5 @@ def generate_file_variations(file_name, extension):
 
 if __name__ == "__main__":
     # Example usage
-    to_be_refactored_folder = r"C:\Users\sergi\PycharmProjects\Cartuli-AI-Assitant\scripts\python\code_to_be_refactored"
+    to_be_refactored_folder = get_full_from_relative(r"..\code_to_be_refactored")
     get_patch(to_be_refactored_folder, ['ginea_pig.py'])
