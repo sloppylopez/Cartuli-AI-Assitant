@@ -1,16 +1,8 @@
-def calculate_average(numbers: list) -> float:
-    total = 0
-    for number in numbers:
-        total += number
-    if numbers:
-        return total / len(numbers)
-    else:
-        return 0
+import math
+
+def calculate_area(radius):
+    result = math.pi * radius ** 2
+    return result
 
 
-
-
-
-nums = [2, 4, 6, 8, 10]
-result = calculate_average(nums)
-print(f"The average is: {result:.2f}")
+calculate_area(5)

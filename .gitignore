@@ -8,3 +8,5 @@ maven_clean_install.bat
 __pycache__
 outputs
 **/*.rfct.py
+**/*.py.patch
+.ai_refactored

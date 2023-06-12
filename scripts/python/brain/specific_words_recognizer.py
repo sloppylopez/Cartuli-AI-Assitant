@@ -12,10 +12,10 @@ def recognize_words(sentence, word1, word2):
 
     return found_words
 
-
-# Example usage
-sentence = "The quick brown fox jumps over the lazy dog"
-word1 = "fox"
-word2 = "dog"
-found_words = recognize_words(sentence, word1, word2)
-print(found_words)
+if __name__ == "__main__":
+    # Example usage
+    sentence = "The quick brown fox jumps over the lazy dog"
+    word1 = "fox"
+    word2 = "dog"
+    found_words = recognize_words(sentence, word1, word2)
+    print(found_words)

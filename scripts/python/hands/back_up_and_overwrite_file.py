@@ -1,6 +1,8 @@
 import shutil
 import os
 
+from tools.logger import logger, logger_err
+
 
 def backup_and_overwrite_file(file_path, new_content):
     # Create a backup by appending '.bak' to the original file name
@@ -17,11 +19,11 @@ def backup_and_overwrite_file(file_path, new_content):
         # Perform some operations using the modified file (e.g., printing its contents)
         with open(file_path, 'rb') as file:
             modified_content = file.read()
-        print("Modified file content:")
-        print(modified_content)
+        logger("Modified file content:")
+        logger(modified_content)
 
     except Exception as e:
-        print(f"An error occurred: {str(e)}")
+        logger_err(f"An error occurred: {str(e)}")
         # In case of any error, remove the modified file and restore the backup
         if os.path.exists(file_path):
             os.remove(file_path)
@@ -33,7 +35,7 @@ def backup_and_overwrite_file(file_path, new_content):
 def restore_file_backup(backup_path, file_path):
     # Restore the original file by replacing the modified file with the backup
     shutil.move(backup_path, file_path)
-    print("File successfully restored to its original state.")
+    logger("File successfully restored to its original state.")
 
 
 if __name__ == "__main__":

@@ -1,9 +1,13 @@
 import spacy
 
-from brain.system_path_checker import is_system_path
-from hands.refactor import output_responses
+from brain.command_recognizer import defragment_input
+from eyes.find_matching_folders import search_folders
+from tools.system_path_checker import is_system_path
+from hands.refactor import refactor_destination
 from mouth.asker import asker, chat_with_openai
 from tools.logger import logger
+
+search_directory = "C:\\Users\\sergi\\PycharmProjects\\Cartuli-AI-Assitant"
 
 # Load the spaCy English language model
 nlp = spacy.load('en_core_web_sm')
@@ -42,7 +46,7 @@ def get_system_message(choice, messages):
 """
     prompt = ""
     if choice == '5':  # Refactor + Clipboard
-        prompt = "Given the following Python code, please refactor it and provide the refactored version," \
+        prompt = "Given the following Python code, refactor it and provide the refactored version," \
                  "avoid shadowing variables from outer scope if possible," \
                  "write the code in the most legible way possible for humans:\n" \
                  " ```\n" + messages + "\n```"
@@ -50,20 +54,19 @@ def get_system_message(choice, messages):
 
 
 # Process user input and perform the corresponding action
-def classify_and_run_command(choice, conversation):
+def classify_and_run_command(choice, conversation, user_input):
     argument = ''
     command = ''
-    doc = nlp(conversation)
-    first_token = doc[0].text.lower() if len(doc) > 0 else None
+    doc = nlp(user_input)
+    ai, command_action, target = defragment_input(doc)
     if choice == '5':  # Refactor + Clipboard
         command = 'refactor'
-    if choice == '6' and is_system_path(first_token):  # Refactor Location + Clipboard
-        command = 'refactor_location'
+    if choice == '6' or command_action == 'location':  # Refactor Location + Clipboard
+        command = 'refactor location'
     if command in commands:
         action = commands[command]
-        if choice != '5' and choice != '6':  # Refactor Text + Clipboard && Refactor Location + Clipboard
-            argument = conversation.split(command, 1)[1].strip()  # Extract the argument after the command
-        conversation = get_system_message(choice, conversation)
+        if choice != '5' and choice != '6' and not command_action == 'location':  # Refactor Text + Clipboard && Refactor Location + Clipboard
+            conversation = get_system_message(choice, conversation)
         if action == "type_chars":
             type_chars(argument)
         elif action == "open":
@@ -79,8 +82,13 @@ def classify_and_run_command(choice, conversation):
         elif action == "refactor_code":
             return refactor_code(conversation)
         elif action == "refactor_location":
-
-            return refactor_code(conversation)
+            matches = search_folders(search_directory, target)
+            for match in matches:
+                if is_system_path(match):
+                    refactor_destination(match)
+                    return
+                else:
+                    return asker(conversation)
     else:
         return asker(conversation)
 
@@ -130,12 +138,6 @@ def call_chat_gpt(script, text):
 
 # Perform the action: refactor code
 def refactor_code(text):
-    logger(f"{text}")
-    # Code to run the script goes here
-    # asker(text)
+    # logger(f"{text}")
     response = chat_with_openai(text)
-    # generated_folder_path = "C:/Users/sergi/PycharmProjects/Cartuli-AI-Assitant/scripts/python/generated"
-    # with open(generated_folder_path, "w") as file:
-    #     file.write(response)
-    #     output_responses()
     return response

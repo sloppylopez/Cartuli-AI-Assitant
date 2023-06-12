@@ -5,8 +5,8 @@ from halo import Halo
 from spinners import Spinners
 
 from brain.text_classificator import classify_and_run_command
-from hands.copy_to_clipboard import copy_from_clipboard
 from mouth.asker import get_open_ai_key
+from tools.clipboard import copy_from_clipboard
 from tools.logger import logger
 
 bye_byes = 'bye', 'exit', 'quit', 'ciao', 'goodbye', 'good bye', 'good-bye', 'bye-bye', ''
@@ -45,16 +45,18 @@ def run_chatbot(conversation='', choice='1'):
         while True:
             if choice in ['1', '2', '3', '4']:  # Voice || Text || Voice + Clipboard || Text + Clipboard
                 user_input = choose_input_method(choice)
-                logger("You said: ".join(user_input))
-                doc = nlp(user_input)
-                user_input = " ".join(token.text for token in doc)
+                logger("You said: " + user_input)
+                # doc = nlp(user_input)
+                # user_input = " ".join(token.text for token in doc)
                 conversation += f"\nUser: {user_input}"
                 # Classify command from input text
-                response = classify_and_run_command(choice, conversation)
+                response = classify_and_run_command(choice,
+                                                    conversation,
+                                                    user_input)  # TODO: REFACTOR THIS, we are dragging the param conversation needlessly since it's always empty as param
             else:
                 conversation += f"\nUser: {copy_from_clipboard()}"
                 # Classify command from input text
-                response = classify_and_run_command(choice, copy_from_clipboard())
+                response = classify_and_run_command(choice, copy_from_clipboard(), None)
             conversation += f"System: \n{response}"
             # logger(response)
             return conversation

@@ -1,6 +1,7 @@
 from plyer import notification
 
 from hands.get_image import get_full_from_relative
+from tools.logger import logger
 
 
 def display_notification(message):
@@ -12,7 +13,8 @@ def display_notification(message):
             toast=True,
             app_icon=get_full_from_relative("../../../images/cartuli-logo-master-small.ico")
         )
-    except:
+    except Exception as e:
+        logger(e)
         pass
 
 

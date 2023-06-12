@@ -1,4 +1,5 @@
 import hashlib
+from hands.get_image import get_full_from_relative
 
 
 def generate_hash(file_content):
@@ -16,6 +17,7 @@ def get_hash_from_file(file_path):
         return hash_value
 
 
-# Example usage
-given_file_path = 'C:/Users/sergi/PycharmProjects/Cartuli-AI-Assitant/scripts/python/code_to_be_refactored/ginea_pig.py'
-print(get_hash_from_file(given_file_path))
+if __name__ == '__main__':
+    # Example usage
+    given_file_path = get_full_from_relative(r"..\code_to_be_refactored\ginea_pig.py")
+    print(get_hash_from_file(given_file_path))
