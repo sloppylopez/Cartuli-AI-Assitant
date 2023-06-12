@@ -1,5 +1,4 @@
 import hashlib
-
 from hands.get_image import get_full_from_relative
 
 

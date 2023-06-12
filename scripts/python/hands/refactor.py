@@ -5,12 +5,15 @@ import openai
 
 from brain.dict_2_array import dict_2_array
 from brain.dict_comparator import return_non_matching_values
-from tools.git_patcher import get_patch
+from brain.tiktoken_counter import count_total_tokens, count_num_tokens_price
 from brain.token_counter import count_tokens
 from eyes.read_file import read_files_and_hash, read_json_file
 from hands.get_image import get_full_from_relative
-from hands.reformat_2_pep8 import format_code, replace_string_lf_with_crlf
+from hands.reformat_2_pep8 import replace_string_lf_with_crlf
+from tools.git_patcher import get_patch
 from tools.logger import logger, logger_err
+
+engine = "text-davinci-003"
 
 
 def generate_refactored_code(file_contents):
@@ -28,10 +31,11 @@ def generate_refactored_code(file_contents):
                      "Code:" \
                      " \n\n```" + replace_string_lf_with_crlf(file_content) + "```\n"
             response = openai.Completion.create(
-                engine="text-davinci-003",
+                engine=engine,
                 prompt=prompt,
                 max_tokens=count_tokens(prompt) * 2,
                 temperature=0,
+                # model="gpt-3.5-turbo-8",  # 8K model
                 n=1
             )
             logger("Usage of the request:\n" + str(response.usage))
@@ -71,7 +75,7 @@ def refactor_files(target_file_contents):
 
 
 def refactor_destination(folder_path):
-    global hidden_folder_path, hidden_file_path, to_be_refactored_folder, non_matching_values
+    global hidden_folder_path, hidden_file_path, to_be_refactored_folder, non_matching_values  # TODO: remove globals
     # Read long term memory, to see which files have been refactored already
     hidden_folder_path = get_full_from_relative("../.cartuli")
     hidden_file_path = os.path.join(hidden_folder_path, "long_term_hash_memory.json")
@@ -81,6 +85,9 @@ def refactor_destination(folder_path):
     target_file_contents = read_files_and_hash(to_be_refactored_folder)
     # Compare the two dictionaries and get only the non-matching values
     non_matching_values = return_non_matching_values(long_term_hash_memory, target_file_contents)
+
+    total_tokens_code = count_total_tokens(non_matching_values)
+    total_tokens_code_price = count_num_tokens_price(total_tokens_code, engine)
     if len(non_matching_values) > 0:
         logger("Non matching values:\n" + json.dumps(non_matching_values))
     if non_matching_values is not None and \
