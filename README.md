@@ -8,9 +8,11 @@
 
 
   <h1>Hi!, my name is <strong>Cartuli</strong>.</h1>
- <h2>I'm an 'achsually' useful AI Assistant. these are my features so far.</h2>
+ <h2>I'm an 'achsually' useful AI Assistant. Watch me refactoring code automagically.</h2>
 
-
+<div style="text-align: center;">
+    <img src="https://raw.githubusercontent.com/sloppylopez/Cartuli-AI-Assitant/main/videos/Learn_to_Refactor.gif" alt="Cartuli AI Assistant Refactoring code" style="max-width: 100%; height: auto;">
+</div>
 
 <h3>Streamlined Voice Commands with Elgato Stream Deck</h3>
 <p>With <strong>Cartuli</strong>, you can now give voice commands directly by pressing buttons on your Elgato Stream
@@ -185,16 +187,15 @@
     <h2>Current State of Affairs</h2>
   <p>Cartuli AI Assistant is here, ready to make your life easier and more productive than ever before!</p>
 
-  <h3>Feature 1: Seamless Windows 11 Terminal Integration</h3>
+<h3>Feature 1: Seamless Windows 11 Terminal Integration</h3>
   <p>With Cartuli AI Assistant, you can now unleash the power of your Windows 11 default terminal with just the press of a button!</p>
 
   <p>Simply press the number a key on your keyboard/elgato Stream Deck, and Cartuli will eagerly be listening to your commands.</p>
 
   <p>Don't worry if you're not sure what to say! or if he does not understand you, after few seconds you will be able to enter the command manually.</p>
 
-  <p>And that's just the beginning! We have many more exciting features in the pipeline, designed to revolutionize your digital experience.</p>
-
-  <p>Stay tuned for future updates as we continue to enhance Cartuli AI Assistant, making it your ultimate digital companion for productivity, entertainment, and so much more!</p>
+<h3>Feature 2: Refactor code automagically</h3>
+  <p>Introducing Cartuli, the AI assistant that's actually useful! With a simple voice command like "Cartuli location target_folder," Cartuli scans the folder, hashes file content, sends it to ChatGPT, creates a Git patch for easy review, saves file hashes in long-term memory, and estimates token count. Experience productivity and joy with Cartuli, your coding companion!</p>
 
 </section>
 <section>
