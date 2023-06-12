@@ -1,6 +1,7 @@
 from plyer import notification
 
-from hands.get_image import get_file_from_path
+from hands.get_image import get_full_from_relative
+from tools.logger import logger
 
 
 def display_notification(message):
@@ -10,9 +11,10 @@ def display_notification(message):
             message=message,
             timeout=10000,  # milliseconds
             toast=True,
-            app_icon=get_file_from_path("../../../images/cartuli-logo-master-small.ico")
+            app_icon=get_full_from_relative("../../../images/cartuli-logo-master-small.ico")
         )
-    except:
+    except Exception as e:
+        logger(e)
         pass
 
 

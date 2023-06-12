@@ -6,10 +6,10 @@ import tkinter as tk
 
 from PIL import Image, ImageTk
 
-from scripts.python.hands.get_image import get_file_from_path
+from hands.get_image import get_full_from_relative
 from tools.logger import logger
 
-image_folder = get_file_from_path("../../../images")
+image_folder = get_full_from_relative("../../../images")
 
 # Get a list of image files from the specified folder
 image_files = [file for file in os.listdir(image_folder) if file.lower().endswith((".jpg", ".jpeg", ".png", ".gif"))]

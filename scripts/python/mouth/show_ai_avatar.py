@@ -4,7 +4,7 @@ import tkinter as tk
 import keyboard
 from PIL import Image, ImageTk
 
-from hands.get_image import get_file_from_path
+from hands.get_image import get_full_from_relative
 
 
 def fade_in(window):
@@ -71,5 +71,5 @@ def display_image(image_path, keyboard):
 
 if __name__ == "__main__":
     # display_image(get_file_from_path("../../../images/cartuli-logo-master.png"))
-    keyboard.add_hotkey("F19", lambda: display_image(get_file_from_path("../../../images/cartuli-logo-master.png")))
+    keyboard.add_hotkey("F19", lambda: display_image(get_full_from_relative("../../../images/cartuli-logo-master.png")))
     keyboard.wait("esc")  # Wait until the 'esc' key is pressed, this is to debug comfortably
