@@ -8,9 +8,11 @@
 
 
   <h1>Hi!, my name is <strong>Cartuli</strong>.</h1>
- <h2>I'm an 'achsually' useful AI Assistant. these are my features so far.</h2>
+ <h2>I'm an 'achsually' useful AI Assistant. Watch me refactoring code automagically.</h2>
 
-
+<div style="text-align: center;">
+    <img src="https://raw.githubusercontent.com/sloppylopez/Cartuli-AI-Assitant/main/videos/Learn_to_Refactor.gif" alt="Cartuli AI Assistant Refactoring code" style="max-width: 100%; height: auto;">
+</div>
 
 <h3>Streamlined Voice Commands with Elgato Stream Deck</h3>
 <p>With <strong>Cartuli</strong>, you can now give voice commands directly by pressing buttons on your Elgato Stream
