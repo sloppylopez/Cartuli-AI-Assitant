@@ -14,11 +14,7 @@ https://github.com/sloppylopez/Cartuli-AI-Assitant/assets/6529911/21032610-c01a-
   <h1>Hi!, my name is <strong>Cartuli</strong>.</h1>
  <h2>I'm an 'achsually' useful AI Assistant. Watch me refactoring code automagically.</h2>
 
-
-
-https://github.com/sloppylopez/Cartuli-AI-Assitant/assets/6529911/59e39413-5465-494d-b480-c4a01706c20d
-
-
+https://github.com/sloppylopez/Cartuli-AI-Assitant/assets/6529911/42638aa8-dcdf-4523-ad43-6c62beee1df9
 
 <h3>Streamlined Voice Commands with Elgato Stream Deck</h3>
 <p>With <strong>Cartuli</strong>, you can now give voice commands directly by pressing buttons on your Elgato Stream
