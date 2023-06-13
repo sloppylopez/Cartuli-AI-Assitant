@@ -2,7 +2,11 @@
 <html>
 <body>
 <div style="text-align: center;">
-    <img src="https://github.com/sloppylopez/Cartuli-AI-Assitant/blob/main/videos/first_feature.gif" alt="Cartuli AI Assistant" style="max-width: 100%; height: auto;">
+
+
+https://github.com/sloppylopez/Cartuli-AI-Assitant/assets/6529911/21032610-c01a-4445-8bf8-c7b0b240d505
+
+
 </div>
 
 
@@ -10,9 +14,11 @@
   <h1>Hi!, my name is <strong>Cartuli</strong>.</h1>
  <h2>I'm an 'achsually' useful AI Assistant. Watch me refactoring code automagically.</h2>
 
-<div style="text-align: center;">
-    <img src="https://raw.githubusercontent.com/sloppylopez/Cartuli-AI-Assitant/main/videos/Learn_to_Refactor.gif" alt="Cartuli AI Assistant Refactoring code" style="max-width: 100%; height: auto;">
-</div>
+
+
+https://github.com/sloppylopez/Cartuli-AI-Assitant/assets/6529911/59e39413-5465-494d-b480-c4a01706c20d
+
+
 
 <h3>Streamlined Voice Commands with Elgato Stream Deck</h3>
 <p>With <strong>Cartuli</strong>, you can now give voice commands directly by pressing buttons on your Elgato Stream
