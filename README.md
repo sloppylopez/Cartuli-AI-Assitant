@@ -3,6 +3,8 @@
 <body>
 <div style="text-align: center;">
 
+CARTULI IS NOW CALLED MONEYPENNY, WE ARE CONTINUING THE DEVELOPMENT OF THIS IDEA HERE, SAME SAME BUT BETTER!!! https://github.com/sloppylopez/moneypenny-idea-plugin
+
 
 https://github.com/sloppylopez/Cartuli-AI-Assitant/assets/6529911/21032610-c01a-4445-8bf8-c7b0b240d505
 
